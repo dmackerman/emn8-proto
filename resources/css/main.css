@@ -1,16 +1,15 @@
 body {
-    background-color  : #ae0000;
-    filter            : progid:DXImageTransform.Microsoft.gradient(gradientType=0, startColorstr='#FFEE0000', endColorstr='#FFAE0000');
-    background-image  : url('data:image/svg+xml;base64,PD94bWwgdmVyc2lvbj0iMS4wIiBlbmNvZGluZz0idXRmLTgi…gd2lkdGg9IjEwMCUiIGhlaWdodD0iMTAwJSIgZmlsbD0idXJsKCNncmFkKSIgLz48L3N2Zz4g');
-    background-size   : 100%;
-    background-image  : -webkit-gradient(linear, 50% 0%, 50% 100%, color-stop(0%, #ee0000), color-stop(80%, #ee0000), color-stop(100%, #ae0000));
-    background-image  : -webkit-linear-gradient(top, #ee0000 0%, #ee0000 80%, #ae0000 100%);
-    background-image  : -moz-linear-gradient(top, #ee0000 0%, #ee0000 80%, #ae0000 100%);
-    background-image  : -o-linear-gradient(top, #ee0000 0%, #ee0000 80%, #ae0000 100%);
-    background-image  : -ms-linear-gradient(top, #ee0000 0%, #ee0000 80%, #ae0000 100%);
-    background-image  : linear-gradient(top, #ee0000 0%, #ee0000 80%, #ae0000 100%);
-    min-width         : 965px;
-    color             : #888;
-    letter-spacing    : -0.5px;
-    background-repeat : no-repeat;
-}
+  background-color: #ae0000;
+  filter: progid:DXImageTransform.Microsoft.gradient(gradientType=0, startColorstr='#FFEE0000', endColorstr='#FFAE0000');
+  background-image: url("data:image/svg+xml;base64,PD94bWwgdmVyc2lvbj0iMS4wIiBlbmNvZGluZz0idXRmLTgi…gd2lkdGg9IjEwMCUiIGhlaWdodD0iMTAwJSIgZmlsbD0idXJsKCNncmFkKSIgLz48L3N2Zz4g");
+  background-size: 100%;
+  background-image: -webkit-gradient(linear, 50% 0%, 50% 100%, color-stop(0%, #ee0000), color-stop(80%, #ee0000), color-stop(100%, #ae0000));
+  background-image: -webkit-linear-gradient(top, #ee0000 0%, #ee0000 80%, #ae0000 100%);
+  background-image: -moz-linear-gradient(top, #ee0000 0%, #ee0000 80%, #ae0000 100%);
+  background-image: -o-linear-gradient(top, #ee0000 0%, #ee0000 80%, #ae0000 100%);
+  background-image: -ms-linear-gradient(top, #ee0000 0%, #ee0000 80%, #ae0000 100%);
+  background-image: linear-gradient(top, #ee0000 0%, #ee0000 80%, #ae0000 100%);
+  min-width: 965px;
+  color: #888;
+  letter-spacing: -0.5px;
+  background-repeat: no-repeat; }
