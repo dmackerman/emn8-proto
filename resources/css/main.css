@@ -1,5 +1,5 @@
 body {
-  background-color: #ae0000;
+  background-color: #AE0000;
   filter: progid:DXImageTransform.Microsoft.gradient(gradientType=0, startColorstr='#FFEE0000', endColorstr='#FFAE0000');
   background-image: url("data:image/svg+xml;base64,PD94bWwgdmVyc2lvbj0iMS4wIiBlbmNvZGluZz0idXRmLTgi…gd2lkdGg9IjEwMCUiIGhlaWdodD0iMTAwJSIgZmlsbD0idXJsKCNncmFkKSIgLz48L3N2Zz4g");
   background-size: 100%;
@@ -10,6 +10,28 @@ body {
   background-image: -ms-linear-gradient(top, #ee0000 0%, #ee0000 80%, #ae0000 100%);
   background-image: linear-gradient(top, #ee0000 0%, #ee0000 80%, #ae0000 100%);
   min-width: 965px;
-  color: #888;
+  color: #888888;
   letter-spacing: -0.5px;
-  background-repeat: no-repeat; }
+  background-repeat: no-repeat;
+  margin: 0 auto;
+  width: 965px;
+  font-family: tahoma, arial, verdana, sans-serif; }
+
+.header-container {
+  background: url(../images/bg_sprite.png) no-repeat;
+  background-position: bottom left;
+  width: 964px;
+  outline: none;
+  height: 100px; }
+
+.header-menu ul {
+  text-align: right; }
+
+.header-menu li {
+  display: inline;
+  margin-right: 0.7em; }
+
+.header-menu a {
+  color: white;
+  text-decoration: none;
+  font-size: 0.7em; }
