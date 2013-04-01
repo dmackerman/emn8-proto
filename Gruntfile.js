@@ -12,7 +12,10 @@ module.exports = function (grunt) {
                 separator: ';'
             },
             project: {
-                src: ['app/**/*.js'],
+                src: [
+                    'app/app.js',
+                    'app/util/Main.js',
+                    'app/**/*.js'],
                 dest: 'build/<%= pkg.filename %>-dev.js'
             },
             libs: {
