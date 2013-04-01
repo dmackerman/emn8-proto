@@ -4,6 +4,10 @@
 //Bootstrap the app
 var App = new Marionette.Application();
 
+/**
+ * Make templates look more like Ext.Tpl
+ * @type {{interpolate: RegExp, evaluate: RegExp}}
+ */
 _.templateSettings = {
     interpolate : /\{(.+?)\}/g,
     evaluate    : /\{\[(.+?)\]\}/g
