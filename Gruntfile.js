@@ -8,8 +8,7 @@ module.exports = function (grunt) {
         // Just concatenate files. Libs and project files are separate.
         concat: {
             options: {
-                banner: '/*! <%= pkg.name %> v<%= pkg.version %> <%= grunt.template.today("yyyy-mm-dd HH:MM") %> */\n',
-                separator: ';'
+                banner: '/*! <%= pkg.name %> v<%= pkg.version %> <%= grunt.template.today("yyyy-mm-dd HH:MM") %> */\n'
             },
             project: {
                 src: [
