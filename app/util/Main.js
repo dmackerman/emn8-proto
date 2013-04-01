@@ -54,7 +54,8 @@ App.util = {};
          * @
          */
         def : function (ns, config) {
-            var extend = config.extend ? u.ns(config.extend) : function () {},//todo: should be Base
+            var Base = App.abstract ? App.abstract.BaseClass : function () {},
+                extend = config.extend ? u.ns(config.extend) : Base,
                 initializing = false,
                 prototype,
                 Class;
