@@ -2,7 +2,8 @@ App.util = {};
 
 (function () {
     var u = App.util,
-        nsCache = {};
+        nsCache = {},
+        arraySlice = Array.prototype.slice;
 
     _.extend(u, {
         emptyFn : function () {},
@@ -88,11 +89,44 @@ App.util = {};
 
         /**
          * Instantiate and initialize a class
-         * @param {Function} Class
+         * @param {String} ns
          */
-        init : function (Class, config) {
-            var instance = new u.ns(Class)(config);
-            return instance;
+        init : function (ns) {
+            var name = arguments[0],
+                args = arraySlice.call(arguments, 1),
+                cls;
+
+            if (typeof name != 'function') {
+                //<debug error>
+                if ((typeof name != 'string' || name.length < 1)) {
+                    throw new Error("Invalid class name '" + name.toString() + "' specified, must be a non-empty string");
+                }
+                //</debug>
+
+                cls = u.ns(name);
+            }
+            else {
+                cls = name;
+            }
+
+            if (!cls) {
+                throw new Error("Cannot create an instance of unrecognized class name: " + name.toString());
+            }
+
+            if (typeof cls != 'function') {
+                throw new Error(name.toString() + "' is a singleton and cannot be instantiated");
+            }
+
+            return u.instantiator(cls, args);
+        },
+
+        instantiator : function (cls, args) {
+            var q = [];
+            for (var i = 0; i < args.length; i++) {
+                q.push("a[" + i + "]");
+            }
+
+            return (new Function ('c', "a", "new c(" + q.join(",") + ")"))(cls, args);
         }
     });
 
@@ -102,6 +136,7 @@ App.util = {};
     _.extend(App, {
         apply : u.apply,
         def   : u.def,
+        init  : u.init,
         ns    : u.ns
     })
 }());
