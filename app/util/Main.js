@@ -5,11 +5,14 @@ App.util = {};
         nsCache = {};
 
     _.extend(u, {
+        emptyFn : function () {},
+
         /**
          * Create a custom namespace. Allows deep creation
          * @param {String} ns
+         * @param {Mixed} value
          */
-        ns : function (ns) {
+        ns : function (ns, value) {
             if (typeof ns != 'string') {
                 throw new Error("Invalid namespace, must be a string");
             }
@@ -28,7 +31,7 @@ App.util = {};
                 obj;
 
             if (last > 0) {
-                for (; i<last; i++ ) {
+                for (; i < last; i++) {
                     part = parts[i];
                     obj = parent[part];
                     if (typeof obj !== 'object') {
@@ -38,7 +41,7 @@ App.util = {};
                 }
             }
 
-            parent[lastNs] = undefined;
+            parent[lastNs] = value;
             parent = parent[lastNs];
 
             nsCache[ns] = parent;
@@ -51,11 +54,40 @@ App.util = {};
          * @
          */
         def : function (ns, config) {
-            var extend = config.extend,
-                init = config.init,
-                constructor = config.constructor;
+            var extend = config.extend ? u.ns(config.extend) : function () {},//todo: should be Base
+                initializing = false,
+                prototype,
+                Class;
 
+            _.extend(config, {
+                _super: extend.prototype
+            });
 
+            initializing = true;
+            prototype = new extend();
+            initializing = false;
+
+            _.extend(prototype, config);
+
+            Class = function () {
+                if (!initializing && this.init) {
+                    this.init.apply(this, arguments);
+                }
+            }
+
+            Class.prototype = prototype;
+            Class.prototype.constructor = Class;
+
+            u.ns(ns, Class);
+        },
+
+        /**
+         * Instantiate and initialize a class
+         * @param {Function} Class
+         */
+        init : function (Class, config) {
+            var instance = new u.ns(Class)(config);
+            return instance;
         }
     });
 
