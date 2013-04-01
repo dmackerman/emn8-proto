@@ -1,12 +1,17 @@
 /*jslint browser:true */
 /*global $, Marionette */
 
+//Bootstrap the app
+var App = new Marionette.Application();
+
+_.templateSettings = {
+    interpolate : /\{(.+?)\}/g,
+    evaluate    : /\{\[(.+?)\]\}/g
+};
+
+
 $(function () {
     'use strict';
     // Simply letting me know that everything is running ok
-    $('body').append('<p>App is Go!!!</p>');
-
-    //Bootstrap the app
-    window.App = new Marionette.Application();
-
+    console.info('App is Go!!!');
 });
