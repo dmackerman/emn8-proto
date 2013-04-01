@@ -61,7 +61,7 @@ App.util = {};
                 Class;
 
             _.extend(config, {
-                _super: extend.prototype
+                _super : extend.prototype
             });
 
             initializing = true;
@@ -77,7 +77,11 @@ App.util = {};
             }
 
             Class.prototype = prototype;
-            Class.prototype.constructor = Class;
+
+            _.extend(Class.prototype, {
+                constructor  : Class,
+                "$className" : ns
+            });
 
             u.ns(ns, Class);
         },
