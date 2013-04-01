@@ -1,26 +1,31 @@
 body {
-  background-color  : #AE0000;
-  filter            : progid:DXImageTransform.Microsoft.gradient(gradientType=0, startColorstr='#FFEE0000', endColorstr='#FFAE0000');
-  background-image  : url('data:image/svg+xml;base64,PD94bWwgdmVyc2lvbj0iMS4wIiBlbmNvZGluZz0idXRmLTgi…gd2lkdGg9IjEwMCUiIGhlaWdodD0iMTAwJSIgZmlsbD0idXJsKCNncmFkKSIgLz48L3N2Zz4g');
-  background-size   : 100%;
-  background-image  : -webkit-gradient(linear, 50% 0%, 50% 100%, color-stop(0%, #EE0000), color-stop(80%, #EE0000), color-stop(100%, #AE0000));
-  background-image  : -webkit-linear-gradient(top, #EE0000 0%, #EE0000 80%, #AE0000 100%);
-  background-image  : -moz-linear-gradient(top, #EE0000 0%, #EE0000 80%, #AE0000 100%);
-  background-image  : -o-linear-gradient(top, #EE0000 0%, #EE0000 80%, #AE0000 100%);
-  background-image  : -ms-linear-gradient(top, #EE0000 0%, #EE0000 80%, #AE0000 100%);
-  background-image  : linear-gradient(top, #EE0000 0%, #EE0000 80%, #AE0000 100%);
+  background-color  : #EE0000;
   min-width         : 965px;
-  color             : #888888;
+  color             : #FFFFFF;
   letter-spacing    : -0.5px;
   background-repeat : no-repeat;
-
-  margin            : 0 auto;
-  width             : 965px;
-
   font-family       : tahoma, arial, verdana, sans-serif;
 }
 
-.header-container {
+body.gradient {
+  background-color : #AE0000;
+  filter           : progid:DXImageTransform.Microsoft.gradient(gradientType=0, startColorstr='#FFEE0000', endColorstr='#FFAE0000');
+  background-image : url('data:image/svg+xml;base64,PD94bWwgdmVyc2lvbj0iMS4wIiBlbmNvZGluZz0idXRmLTgi…gd2lkdGg9IjEwMCUiIGhlaWdodD0iMTAwJSIgZmlsbD0idXJsKCNncmFkKSIgLz48L3N2Zz4g');
+  background-size  : 100%;
+  background-image : -webkit-gradient(linear, 50% 0%, 50% 100%, color-stop(0%, #EE0000), color-stop(80%, #EE0000), color-stop(100%, #AE0000));
+  background-image : -webkit-linear-gradient(top, #EE0000 0%, #EE0000 80%, #AE0000 100%);
+  background-image : -moz-linear-gradient(top, #EE0000 0%, #EE0000 80%, #AE0000 100%);
+  background-image : -o-linear-gradient(top, #EE0000 0%, #EE0000 80%, #AE0000 100%);
+  background-image : -ms-linear-gradient(top, #EE0000 0%, #EE0000 80%, #AE0000 100%);
+  background-image : linear-gradient(top, #EE0000 0%, #EE0000 80%, #AE0000 100%);
+}
+
+#viewport {
+  margin : 0 auto;
+  width  : 965px;
+}
+
+#header-container {
   background          : url(../images/bg_sprite.png) no-repeat;
   background-position : bottom left;
   width               : 964px;
@@ -29,17 +34,32 @@ body {
   height              : 100px;
 }
 
-.header-menu ul {
+#header-menu ul {
   text-align : right;
 }
 
-.header-menu li {
+#header-menu li {
   display      : inline;
   margin-right : 0.7em;
 }
 
-.header-menu a {
+#header-menu a {
   color           : white;
   text-decoration : none;
   font-size       : 0.7em;
+}
+
+#dock {
+  position   : fixed;
+  bottom     : 0;
+  lelft      : 0;
+  width      : 100%;
+  background : #000000;
+  height     : 100px;
+
+}
+
+#footer-main {
+  font-size  : 0.8em;
+  text-align : center;
 }
