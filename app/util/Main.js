@@ -81,7 +81,8 @@ App.util = {};
 
             _.extend(Class.prototype, {
                 constructor  : Class,
-                "$className" : ns
+                "$className" : ns,
+                "$super"     : Base.prototype
             });
 
             u.ns(ns, Class);
@@ -117,16 +118,16 @@ App.util = {};
                 throw new Error(name.toString() + "' is a singleton and cannot be instantiated");
             }
 
-            return u.instantiator(cls, args);
+            return new (u.instantiator(args))(cls, args);
         },
 
-        instantiator : function (cls, args) {
+        instantiator : function (args) {
             var q = [];
             for (var i = 0; i < args.length; i++) {
                 q.push("a[" + i + "]");
             }
 
-            return (new Function ('c', "a", "new c(" + q.join(",") + ")"))(cls, args);
+            return new Function('c', "a", "return new c(" + q.join(",") + ")");
         }
     });
 
