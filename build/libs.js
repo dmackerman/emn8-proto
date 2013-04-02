@@ -1,4 +1,3 @@
-/*! Pizza Hut Pilot App v0.0.1a 2013-04-01 00:02 */
 /*!
  * jQuery JavaScript Library v1.9.1
  * http://jquery.com/
@@ -9596,7 +9595,8 @@ if ( typeof define === "function" && define.amd && define.amd.jQuery ) {
 }
 
 })( window );
-;// Underscore.js 1.4.4
+
+// Underscore.js 1.4.4
 // ===================
 
 // > http://underscorejs.org
@@ -10823,7 +10823,8 @@ if ( typeof define === "function" && define.amd && define.amd.jQuery ) {
   });
 
 }).call(this);
-;/*
+
+/*
     json2.js
     2012-10-08
 
@@ -11309,7 +11310,8 @@ if (typeof JSON !== 'object') {
         };
     }
 }());
-;//     Backbone.js 1.0.0
+
+//     Backbone.js 1.0.0
 
 //     (c) 2010-2013 Jeremy Ashkenas, DocumentCloud Inc.
 //     Backbone may be freely distributed under the MIT license.
@@ -12880,7 +12882,8 @@ if (typeof JSON !== 'object') {
   };
 
 }).call(this);
-;// MarionetteJS (Backbone.Marionette)
+
+// MarionetteJS (Backbone.Marionette)
 // ----------------------------------
 // v1.0.2
 //

@@ -12,7 +12,12 @@
 
 
         <link rel="stylesheet" href="resources/css/normalize.min.css">
-        <link rel="stylesheet" type="text/css" href="resources/css/main.css">
+        <link rel="stylesheet" type="text/css" media="screen, projection" href="resources/css/main.css">
+        <link href="/stylesheets/print.css" media="print" rel="stylesheet" type="text/css"/>
+        <!--[if IE]>
+        <link href="/stylesheets/ie.css" media="screen, projection" rel="stylesheet" type="text/css"/>
+        <![endif]-->
+
 
         <!--[if lt IE 9]>
         <script src="lib/html5shiv.js"></script>
@@ -48,7 +53,7 @@
 
                     <aside class="pb-toppings">
                         <ul class="topping-selectors">
-                            <li>Meats</li>
+                            <li class="selected">Meats</li>
                             <li>Veggies</li>
                         </ul>
 
@@ -62,14 +67,16 @@
                             <figure class="pb-topping bacon">Bacon</figure>
                             <figure class="pb-topping chicken">Chicken</figure>
                             <figure class="pb-topping bacon">Bacon</figure>
-                            <figure class="pb-topping pepperoni">Pepperoni</figure>
                             <figure class="pb-topping chicken">Chicken</figure>
+                            <figure class="pb-topping pepperoni">Pepperoni</figure>
                             <figure class="pb-topping meetballs">Meetballs</figure>
                         </div>
 
                         <button class="pb-continue">Continue</button>
                         <footer>Any special requests | Start over</footer>
                     </aside>
+
+                    <div class="clearboth"></div>
 
                     <div class="pb-canvas">
 
