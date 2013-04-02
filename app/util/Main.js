@@ -62,7 +62,7 @@ App.util = {};
                 Class;
 
             _.extend(config, {
-                _super : extend.prototype
+                $super : extend.prototype
             });
 
             initializing = true;
@@ -81,8 +81,7 @@ App.util = {};
 
             _.extend(Class.prototype, {
                 constructor  : Class,
-                "$className" : ns,
-                "$super"     : Base.prototype
+                "$className" : ns
             });
 
             u.ns(ns, Class);
