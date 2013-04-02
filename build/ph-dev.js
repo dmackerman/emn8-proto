@@ -1,4 +1,4 @@
-/*! Pizza-Hut-Pilot-App v0.0.1a 2013-04-02 00:02 */
+/*! Pizza-Hut-Pilot-App v0.0.1a 2013-04-02 22:27 */
 /*jslint browser:true */
 /*global $, Marionette */
 
@@ -14,11 +14,13 @@ _.templateSettings = {
     evaluate    : /\{\[(.+?)\]\}/g
 };
 
+App.controllers = {};
 
 $(function () {
     'use strict';
     // Simply letting me know that everything is running ok
     console.info('App is Go!!!');
+
 });
 
 App.util = {};
@@ -65,7 +67,7 @@ App.util = {};
                 }
             }
 
-            parent[lastNs] = value;
+            parent[lastNs] = parent[lastNs] || value;
             parent = parent[lastNs];
 
             nsCache[ns] = parent;
@@ -168,6 +170,18 @@ App.util = {};
 
 
 
+App.def('App.util.Controller', {
+    init: function () {
+        'use strict';
+
+        var name;
+
+        this.$name = name = this.$className.replace('App.controller.', '');
+
+        App.ns("App.controllers." + name, this);
+    }
+});
+
 App.def('App.abstract.BaseClass', {
     init: function () {
         _.extend(this, Backbone.Events);
@@ -219,6 +233,59 @@ App.def('App.abstract.Page', {
         this.trigger('update', this, data);
     }
 });
+$(function () {
+    'use strict';
+    App.init('App.controller.Pizza');
+
+});
+
+App.def('App.controller.Pizza', {
+    extend : 'App.util.Controller',
+    init   : function () {
+        'use strict';
+
+        App.controllers.Pizza = this;
+
+        $(".pizza-builder").delegate(".pb-topping", "click", this.onToppingClick);
+        $(".pizza-builder").delegate(".topping-selectors li", "click", this.onToppingGroupClick);
+    },
+
+    onToppingClick: function () {
+        'use strict';
+
+        var type = this.className.replace(/(\W*)pb\-topping(\W*)/, ''),
+            selector = '.' + type,
+            canvas = $('.pb-canvas'),
+            exists = canvas.children(selector);
+
+        if (exists.length>0) {
+            return exists.remove();
+        }
+
+        canvas.append('<div class="' + type + '"></div>');
+    },
+
+    onToppingGroupClick: function () {
+        'use strict';
+
+        var el = $(this),
+            isSelected = el.hasClass('selected');
+
+        if (isSelected) {
+            // this is already selected. Exit gracefully
+            return;
+        }
+
+        //select another group
+        el.siblings('.selected').removeClass('selected');
+        el.addClass('selected');
+
+        //todo: now load that group
+
+    }
+});
+
+
 App.def('App.util.Registry', {
     init : function () {
         this.model = Backbone.Model.extend({});

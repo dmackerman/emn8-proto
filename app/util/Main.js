@@ -42,7 +42,7 @@ App.util = {};
                 }
             }
 
-            parent[lastNs] = value;
+            parent[lastNs] = parent[lastNs] || value;
             parent = parent[lastNs];
 
             nsCache[ns] = parent;

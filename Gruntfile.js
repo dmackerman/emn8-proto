@@ -14,6 +14,7 @@ module.exports = function (grunt) {
                 src: [
                     'app/app.js',
                     'app/util/Main.js',
+                    'app/util/Controller.js',
                     'app/**/*.js'],
                 dest: 'build/<%= pkg.filename %>-dev.js'
             },

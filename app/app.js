@@ -13,9 +13,11 @@ _.templateSettings = {
     evaluate    : /\{\[(.+?)\]\}/g
 };
 
+App.controllers = {};
 
 $(function () {
     'use strict';
     // Simply letting me know that everything is running ok
     console.info('App is Go!!!');
+
 });
