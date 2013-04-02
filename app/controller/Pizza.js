@@ -6,31 +6,54 @@ $(function () {
 
 App.def('App.controller.Pizza', {
     extend : 'App.util.Controller',
-    init   : function () {
+
+    /**
+     * Cached reference to canvas
+     */
+    canvas : undefined,
+
+    /**
+     * Cached reference to canvas
+     */
+    builder : undefined,
+
+    init : function () {
         'use strict';
+
+        var builder = this.builder = $(".pizza-builder");
 
         App.controllers.Pizza = this;
 
-        $(".pizza-builder").delegate(".pb-topping", "click", this.onToppingClick);
-        $(".pizza-builder").delegate(".topping-selectors li", "click", this.onToppingGroupClick);
+        builder.delegate(".pb-topping", "click", {me : this}, this.onToppingClick);
+        builder.delegate(".topping-selectors li", "click", this.onToppingGroupClick);
     },
 
-    onToppingClick: function () {
+    /**
+     * When user selects a topping, add it's layer on top of pizza
+     * If already there, remove it
+     * @param ev
+     * @returns {*}
+     */
+    onToppingClick : function (ev) {
         'use strict';
 
-        var type = this.className.replace(/(\W*)pb\-topping(\W*)/, ''),
+        var me = ev.data.me,
+            type = this.className.replace(/(\W*)pb\-topping(\W*)/, ''),
             selector = '.' + type,
-            canvas = $('.pb-canvas'),
+            canvas = me.getCanvas(),
             exists = canvas.children(selector);
 
-        if (exists.length>0) {
+        if (exists.length > 0) {
             return exists.remove();
         }
 
         canvas.append('<div class="' + type + '"></div>');
     },
 
-    onToppingGroupClick: function () {
+    /**
+     * Switch topping group
+     */
+    onToppingGroupClick : function () {
         'use strict';
 
         var el = $(this),
@@ -47,5 +70,24 @@ App.def('App.controller.Pizza', {
 
         //todo: now load that group
 
+    },
+
+    /**
+     * Cache the reference to canvas
+     * @returns {*}
+     */
+    getCanvas : function () {
+        'use strict';
+
+        var me = this,
+            canvas = me.canvas;
+
+        if (canvas) {
+            return canvas;
+        }
+
+        canvas = me.canvas = me.builder.children('.pb-canvas');
+
+        return canvas;
     }
 });
