@@ -1,6 +1,8 @@
 App.util = {};
 
 (function () {
+    'use strict';
+
     var u = App.util,
         nsCache = {},
         arraySlice = Array.prototype.slice;
@@ -11,10 +13,10 @@ App.util = {};
         /**
          * Create a custom namespace. Allows deep creation
          * @param {String} ns
-         * @param {Mixed} value
+         * @param {Object} value
          */
         ns : function (ns, value) {
-            if (typeof ns != 'string') {
+            if (!_.isString(ns)) {
                 throw new Error("Invalid namespace, must be a string");
             }
 
@@ -24,18 +26,18 @@ App.util = {};
             }
 
             var parts = ns.split('.'),
-                i = 0,
                 last = parts.length - 1,
                 lastNs = parts[last],
                 parent = window,
                 part,
-                obj;
+                obj,
+                i;
 
             if (last > 0) {
-                for (; i < last; i++) {
+                for (i = 0; i < last; i += 1) {
                     part = parts[i];
                     obj = parent[part];
-                    if (typeof obj !== 'object') {
+                    if (!_.isObject(obj)) {
                         parent[part] = {};
                     }
                     parent = parent[part];
@@ -56,17 +58,17 @@ App.util = {};
          */
         def : function (ns, config) {
             var Base = App.abstract ? App.abstract.BaseClass : function () {},
-                extend = config.extend ? u.ns(config.extend) : Base,
+                Extend = config.extend ? u.ns(config.extend) : Base,
                 initializing = false,
                 prototype,
                 Class;
 
             _.extend(config, {
-                $super : extend.prototype
+                $super : Extend.prototype
             });
 
             initializing = true;
-            prototype = new extend();
+            prototype = new Extend();
             initializing = false;
 
             _.extend(prototype, config);
@@ -75,7 +77,7 @@ App.util = {};
                 if (!initializing && this.init) {
                     this.init.apply(this, arguments);
                 }
-            }
+            };
 
             Class.prototype = prototype;
 
@@ -92,20 +94,20 @@ App.util = {};
          * @param {String} ns
          */
         init : function (ns) {
-            var name = arguments[0],
+            var a = arguments,
+                name = a[0],
                 args = arraySlice.call(arguments, 1),
                 cls;
 
-            if (typeof name != 'function') {
+            if (!_.isFunction(name)) {
                 //<debug error>
-                if ((typeof name != 'string' || name.length < 1)) {
+                if (!_.isString(name) || name.length < 1) {
                     throw new Error("Invalid class name '" + name.toString() + "' specified, must be a non-empty string");
                 }
                 //</debug>
 
                 cls = u.ns(name);
-            }
-            else {
+            } else {
                 cls = name;
             }
 
@@ -113,7 +115,7 @@ App.util = {};
                 throw new Error("Cannot create an instance of unrecognized class name: " + name.toString());
             }
 
-            if (typeof cls != 'function') {
+            if (!_.isFunction(cls)) {
                 throw new Error(name.toString() + "' is a singleton and cannot be instantiated");
             }
 
@@ -121,8 +123,10 @@ App.util = {};
         },
 
         instantiator : function (args) {
-            var q = [];
-            for (var i = 0; i < args.length; i++) {
+            var q = [],
+                i;
+
+            for (i = 0; i < args.length; i += 1) {
                 q.push("a[" + i + "]");
             }
 
@@ -138,7 +142,7 @@ App.util = {};
         def   : u.def,
         init  : u.init,
         ns    : u.ns
-    })
+    });
 }());
 
 
