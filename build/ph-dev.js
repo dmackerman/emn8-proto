@@ -1,4 +1,4 @@
-/*! Pizza-Hut-Pilot-App v0.0.1a 2013-04-03 20:49 */
+/*! Pizza-Hut-Pilot-App v0.0.1a 2013-04-03 21:47 */
 /*jslint browser:true */
 /*global $, Marionette */
 
@@ -463,14 +463,14 @@ App.def('App.controller.Pizza', {
 
 
 //        me.showMenu(ev.clientX, ev.clientY);
-        me.showMenu(pos.left + 35 - 97, pos.top - 40);
+        me.showMenu(pos.left + 35 - 97, pos.top - 40, type);
         console.log(ev);
 
         if (exists.length > 0) {
-            return exists.remove();
+//            return exists.remove();
         }
 
-        canvas.append('<div class="' + type + '"></div>');
+//        canvas.append('<div class="' + type + '"></div>');
     },
 
     /**
@@ -517,20 +517,19 @@ App.def('App.controller.Pizza', {
     /**
      * This should belong to a Page, but is now here for lack of time
      */
-    showMenu : function (x, y, ev) {
+    showMenu : function (x, y, type) {
         'use strict';
 
         var me = this,
-            html;
-
-        console.log(x,y);
+            html,
+            el;
 
         html = [
             '<div class="pb-toppings-menu">',
             '<ul class="pb-topping-selector">',
-            '<li>Left</li>',
-            '<li class="selected">Whole</li>',
-            '<li>Right</li>',
+            '<li class="side-left">Left</li>',
+            '<li class="side-whole">Whole</li>',
+            '<li class="side-right">Right</li>',
             '</ul>',
             '</div>'
         ].join('');
@@ -539,10 +538,53 @@ App.def('App.controller.Pizza', {
 
         $('body').append(html);
 
-        $('.pb-toppings-menu').css({
+        el = $('.pb-toppings-menu').css({
             top  : y + 'px',
             left : x + 'px'
         });
+
+        $('.pb-toppings-menu li').on('click', {me: me, type: type}, me.showTopping);
+
+    },
+
+    showTopping: function (ev) {
+        'use strict';
+
+        var me = ev.data.me,
+            type = ev.data.type,
+            el = $(this),
+            canvas = me.getCanvas(),
+            where = this.className.match(/side\-(\S*)/)[1],
+            exists = canvas.children('.' + type + '-' + where),
+            pattern = new RegExp(type  + "-(\S*)");
+
+//        console.log(ev.data);
+
+        //remove all
+        me.findTopping(pattern).remove();
+        el.siblings().removeClass('selected')
+
+        if (el.hasClass('selected')) {
+            return el.removeClass('selected');
+        }
+
+        canvas.append('<div class="' + type + '-' + where + '"></div>');
+        el.addClass('selected');
+    },
+
+    findTopping: function (regexp) {
+        'use strict';
+
+        var me = this,
+            canvas = me.getCanvas(),
+            els = canvas.children(),
+            found;
+
+        found = els.filter(function() {
+            return this.className.match(regexp);
+        });
+
+        return found;
     }
 });
 
