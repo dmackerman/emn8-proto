@@ -23,8 +23,8 @@ javascripts_dir = "javascripts"
 # and then run:
 # sass-convert -R --from scss --to sass sass scss && rm -rf sass && mv scss sass
 
-#environment  = :production
-#output_style = :compressed
+environment  = :production
+output_style = :compressed
 
 
 #Include compass-recipes
