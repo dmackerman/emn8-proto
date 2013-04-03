@@ -13,29 +13,94 @@ App.def('App.abstract.Page', {
      * '<div>{[for (i in obj) {print obj[i];}]}</div'>
      *
      */
-    tpl: '',
+    tpl : undefined,
 
     /**
      * Template data object
      */
-    data: undefined,
+    data : undefined,
 
+    /**
+     * Plain html to be used instead of template
+     */
+    html : undefined,
 
-    init: function () {
-        // sve the original string
-        this.$tpl = this.tpl;
+    /**
+     * DOM node to apply html to
+     */
+    applyTo : undefined,
 
-        // compile the template
-        this.tpl = _.template(this.tpl);
+    init : function () {
+        'use strict';
+        var me = this;
 
-        if (_.isObject(this.data) || _.isArray(this.data)) {
-            this.setData(data);
+        me.$super.init.apply(me, arguments);
+
+        if (_.isString(me.tpl)) {
+            me.initTpl();
+        } else if (_.isString(me.html)) {
+            me.initHtml();
         }
     },
 
-    setData: function (data) {
-        this.data = data;
-        this.tpl()
-        this.trigger('update', this, data);
+    initTpl : function () {
+        'use strict';
+
+        var me = this;
+
+        // save the original string
+        me.$tpl = me.tpl;
+
+        // compile the template
+        me.tpl = _.template(me.tpl);
+
+        if (_.isObject(me.data) || _.isArray(me.data)) {
+            me.setData();
+        }
+    },
+
+    initHtml : function () {
+        'use strict';
+        this.setHtml();
+    },
+
+    setData : function (data) {
+        'use strict';
+
+        var me = this;
+
+        if (data) {
+            me.data = data;
+        }
+        me.setHtml(me.tpl(me.data));
+        me.trigger('update', me, me.data, me.tpl);
+    },
+
+    setHtml : function (html, target) {
+        'use strict';
+
+        var me = this,
+            to = target || me.applyTo,
+            content = html || me.html,
+
+            fragment = me.$fragment || document.createDocumentFragment(),
+            div = me.$el,
+            el;
+
+        if (!div) {
+            div = document.createElement('div');
+            div.id = _.uniqueId('page_');
+        }
+
+        div.innerHTML = content;
+
+        fragment.appendChild(div);
+        el = fragment.cloneNode(true);
+        $(to).append(el);
+
+        _.extend(me, {
+            $fragment : fragment,
+            $el       : el
+        });
     }
 });
