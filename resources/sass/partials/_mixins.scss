@@ -1,0 +1,9 @@
+@mixin yellow-button-gradient {
+  color : #222222;
+  @include background(linear-gradient(top, $highlight-light, $highlight-med-light 48%, $highlight-med-dark 52%, $highlight-dark));
+}
+
+@mixin inactive-button-gradient {
+  color : #8B8B8B;
+  @include background(linear-gradient(top, $inactive-dark, $inactive-light));
+}

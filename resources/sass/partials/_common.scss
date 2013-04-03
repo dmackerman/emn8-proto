@@ -1,0 +1,175 @@
+body {
+  background-color  : $lightred;
+  min-width         : 965px;
+  color             : #FFFFFF;
+  letter-spacing    : -0.5px;
+  background-repeat : no-repeat;
+  font-family       : tahoma, arial, verdana, sans-serif;
+}
+
+body.gradient {
+  background-color : #AE0000;
+  filter           : progid:DXImageTransform.Microsoft.gradient(gradientType=0, startColorstr='#FFEE0000', endColorstr='#FFAE0000');
+  background-image : url('data:image/svg+xml;base64,PD94bWwgdmVyc2lvbj0iMS4wIiBlbmNvZGluZz0idXRmLTgi…gd2lkdGg9IjEwMCUiIGhlaWdodD0iMTAwJSIgZmlsbD0idXJsKCNncmFkKSIgLz48L3N2Zz4g');
+  background-size  : 100%;
+  background-image : -webkit-gradient(linear, 50% 0%, 50% 100%, color-stop(0%, #EE0000), color-stop(80%, #EE0000), color-stop(100%, #AE0000));
+  background-image : -webkit-linear-gradient(top, #EE0000 0%, #EE0000 80%, #AE0000 100%);
+  background-image : -moz-linear-gradient(top, #EE0000 0%, #EE0000 80%, #AE0000 100%);
+  background-image : -o-linear-gradient(top, #EE0000 0%, #EE0000 80%, #AE0000 100%);
+  background-image : -ms-linear-gradient(top, #EE0000 0%, #EE0000 80%, #AE0000 100%);
+  background-image : linear-gradient(top, #EE0000 0%, #EE0000 80%, #AE0000 100%);
+}
+
+#viewport {
+  margin : 0 auto;
+  width  : 965px;
+}
+
+#header-container {
+  background          : url(../images/bg_sprite.png) no-repeat;
+  background-position : bottom left;
+  width               : 964px;
+  outline             : none;
+  //text-indent : -5600px;
+  height              : 100px;
+}
+
+#header-menu ul {
+  text-align : right;
+}
+
+#header-menu li {
+  display      : inline;
+  margin-right : 0.7em;
+}
+
+#header-menu a {
+  color           : white;
+  text-decoration : none;
+  font-size       : 0.7em;
+}
+
+#dock {
+  position   : fixed;
+  bottom     : 0;
+  lelft      : 0;
+  width      : 100%;
+  background : #000000;
+  height     : 100px;
+
+}
+
+#footer-main {
+  font-size  : 0.8em;
+  text-align : center;
+}
+
+button {
+  padding           : 2px 15px;
+  border            : 1px solid #E4B000;
+  background-image  : none;
+  background-color  : $highlight-light;
+
+  @include yellow-button-gradient;
+
+  zoom              : 1;
+  cursor            : pointer;
+  white-space       : nowrap;
+  vertical-align    : middle;
+  background-repeat : no-repeat;
+
+  font-size         : 20px;
+  font-weight       : bold;
+  color             : #333333;
+
+  @include border-radius(3px);
+}
+
+.clearboth {
+  clear : both;
+}
+
+//@import "pizzabuilder";
+
+// Pizza Builder
+.pizza-builder {
+  display          : block;
+  background-color : #222222;;
+  border           : 5px solid #C40010;
+  @include border-radius(5px);
+  @include single-box-shadow(rgba(0, 0, 0, 0.5), 0, 4px, 10px);
+  @include user-select(none);
+}
+
+.pb-dropdowns {
+  text-align    : center;
+  padding       : 10px 0;
+  border-bottom : 1px solid #555555;
+  margin        : 0 auto;
+  width         : 90%;
+
+  select {
+    width : 240px;
+  }
+
+  option {
+
+  }
+}
+
+$topping-selectors-height : 24px;
+
+.pb-toppings {
+  float        : right;
+  text-align   : center;
+  margin-right : 20px;
+  color        : #222222;
+
+  .topping-selectors {
+    list-style  : none;
+    margin      : 1em 0.7em;
+    padding     : 0;
+    font-weight : bold;
+    font-size   : 0.9em;
+    line-height : $topping-selectors-height;
+    height      : $topping-selectors-height;
+
+    li {
+      width  : 50%;
+      float  : left;
+      cursor : pointer;
+      height : $topping-selectors-height;
+      @include inactive-button-gradient;
+      &.selected {
+        @include yellow-button-gradient;
+      }
+      &:first-child {
+        @include border-radius(5px 0 0 5px);
+      }
+      &:last-child {
+        @include border-radius(0 5px 5px 0);
+      }
+    }
+  }
+
+  .toppings {
+    width       : 330px;
+    font-weight : bold;
+    font-size   : 0.7em;
+
+  }
+
+  .pb-continue {
+    height : 40px;
+    width  : 180px;
+
+  }
+
+  footer {
+    font-size  : 0.7em;
+    text-align : center;
+    color      : $highlight-dark;
+    margin     : 4px 0 1em 0;
+  }
+
+}

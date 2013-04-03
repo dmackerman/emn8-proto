@@ -1,0 +1,51 @@
+.pb-topping {
+  margin           : 0 0 10px 10px;
+  float            : left;
+  width            : 70px;
+  background-color : #C2C2C2;
+  height           : 35px;
+  padding-top      : 65px;
+  position         : relative;
+  @include border-radius(5px);
+  @include background(linear-gradient(top, #FFFFFF, #C2C2C2));
+
+  &:after {
+    background-image : url(../images/toppings.png);
+    content          : '';
+    position         : absolute;
+  }
+
+  &.chicken:after {
+    background-position : -1px -124px;;
+    top                 : 26px;
+    left                : 9px;
+    width               : 56px;
+    height              : 32px;
+  }
+
+  &.bacon:after {
+    background-position : -1px -155px;
+    top                 : 16px;
+    left                : 9px;
+    width               : 54px;
+    height              : 45px;
+  }
+
+  &.meetballs:after {
+    background-position : -55px -156px;
+    top                 : 27px;
+    left                : 9px;
+    width               : 54px;
+    height              : 26px;
+  }
+
+  &.pepperoni:after {
+    background-position : -110px -156px;
+    top                 : 16px;
+    left                : 12px;
+    width               : 46px;
+    height              : 46px;
+  }
+}
+
+@import "canvas";

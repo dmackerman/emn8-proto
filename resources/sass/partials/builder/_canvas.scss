@@ -1,0 +1,45 @@
+// This is where we build pizza layers
+
+.pb-canvas {
+  position    : relative;
+  margin-left : 20px;
+  height      : 460px;
+  float       : left;
+
+  .marinara {
+    top              : 0;
+    left             : 0;
+    width            : 478px;
+    height           : 479px;
+    background-image : url(../images/pizza-cheese.png);
+  }
+
+  .pepperoni {
+    top              : 58px;
+    left             : 47px;
+    width            : 392px;
+    height           : 387px;
+    background-image : url(../images/pizza-pepperoni-full.png);
+  }
+
+  .pepperoni-left {
+    top              : 58px;
+    left             : 47px;
+    width            : 392px;
+    height           : 387px;
+    background-image : url(../images/pizza-pepperoni-left.png);
+  }
+
+  .pepperoni-right {
+    top              : 58px;
+    left             : 47px;
+    width            : 392px;
+    height           : 387px;
+    background-image : url(../images/pizza-pepperoni-right.png);
+  }
+}
+
+.pb-canvas > div {
+  position          : absolute;
+  background-repeat : no-repeat;
+}
