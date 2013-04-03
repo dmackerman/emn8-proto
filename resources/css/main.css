@@ -67,11 +67,12 @@ body.gradient {
 
 /* line 62, ../sass/partials/_common.scss */
 #footer-main {
+  margin-top: 1.5em;
   font-size: 0.8em;
   text-align: center;
 }
 
-/* line 67, ../sass/partials/_common.scss */
+/* line 68, ../sass/partials/_common.scss */
 button {
   padding: 2px 15px;
   border: 1px solid #E4B000;
@@ -98,12 +99,12 @@ button {
   border-radius: 3px;
 }
 
-/* line 88, ../sass/partials/_common.scss */
+/* line 89, ../sass/partials/_common.scss */
 .clearboth {
   clear: both;
 }
 
-/* line 95, ../sass/partials/_common.scss */
+/* line 96, ../sass/partials/_common.scss */
 .pizza-builder {
   display: block;
   background-color: #222222;
@@ -121,7 +122,7 @@ button {
   user-select: none;
 }
 
-/* line 104, ../sass/partials/_common.scss */
+/* line 105, ../sass/partials/_common.scss */
 .pb-dropdowns {
   text-align: center;
   padding: 10px 0;
@@ -129,19 +130,19 @@ button {
   margin: 0 auto;
   width: 90%;
 }
-/* line 111, ../sass/partials/_common.scss */
+/* line 112, ../sass/partials/_common.scss */
 .pb-dropdowns select {
   width: 240px;
 }
 
-/* line 122, ../sass/partials/_common.scss */
+/* line 123, ../sass/partials/_common.scss */
 .pb-toppings {
   float: right;
   text-align: center;
   margin-right: 20px;
   color: #222222;
 }
-/* line 128, ../sass/partials/_common.scss */
+/* line 129, ../sass/partials/_common.scss */
 .pb-toppings .topping-selectors {
   list-style: none;
   margin: 1em 0.7em;
@@ -151,7 +152,7 @@ button {
   line-height: 24px;
   height: 24px;
 }
-/* line 137, ../sass/partials/_common.scss */
+/* line 138, ../sass/partials/_common.scss */
 .pb-toppings .topping-selectors li {
   width: 50%;
   float: left;
@@ -164,7 +165,7 @@ button {
   background: -o-linear-gradient(top, #2d2d2d, #626262);
   background: linear-gradient(top, #2d2d2d, #626262);
 }
-/* line 143, ../sass/partials/_common.scss */
+/* line 144, ../sass/partials/_common.scss */
 .pb-toppings .topping-selectors li.selected {
   color: #222222;
   background: -webkit-gradient(linear, 50% 0%, 50% 100%, color-stop(0%, #ffd441), color-stop(48%, #ffd135), color-stop(52%, #ffc707), color-stop(100%, #ffc911));
@@ -173,7 +174,7 @@ button {
   background: -o-linear-gradient(top, #ffd441, #ffd135 48%, #ffc707 52%, #ffc911);
   background: linear-gradient(top, #ffd441, #ffd135 48%, #ffc707 52%, #ffc911);
 }
-/* line 146, ../sass/partials/_common.scss */
+/* line 147, ../sass/partials/_common.scss */
 .pb-toppings .topping-selectors li:first-child {
   -webkit-border-radius: 5px 0 0 5px;
   -moz-border-radius: 5px 0 0 5px;
@@ -181,7 +182,7 @@ button {
   -o-border-radius: 5px 0 0 5px;
   border-radius: 5px 0 0 5px;
 }
-/* line 149, ../sass/partials/_common.scss */
+/* line 150, ../sass/partials/_common.scss */
 .pb-toppings .topping-selectors li:last-child {
   -webkit-border-radius: 0 5px 5px 0;
   -moz-border-radius: 0 5px 5px 0;
@@ -189,18 +190,18 @@ button {
   -o-border-radius: 0 5px 5px 0;
   border-radius: 0 5px 5px 0;
 }
-/* line 155, ../sass/partials/_common.scss */
+/* line 156, ../sass/partials/_common.scss */
 .pb-toppings .toppings {
   width: 330px;
   font-weight: bold;
   font-size: 0.7em;
 }
-/* line 162, ../sass/partials/_common.scss */
+/* line 163, ../sass/partials/_common.scss */
 .pb-toppings .pb-continue {
   height: 40px;
   width: 180px;
 }
-/* line 168, ../sass/partials/_common.scss */
+/* line 169, ../sass/partials/_common.scss */
 .pb-toppings footer {
   font-size: 0.7em;
   text-align: center;
@@ -222,11 +223,11 @@ button {
   -ms-border-radius: 5px;
   -o-border-radius: 5px;
   border-radius: 5px;
-  background: -webkit-gradient(linear, 50% 0%, 50% 100%, color-stop(0%, #ffffff), color-stop(100%, #c2c2c2));
-  background: -webkit-linear-gradient(top, #ffffff, #c2c2c2);
-  background: -moz-linear-gradient(top, #ffffff, #c2c2c2);
-  background: -o-linear-gradient(top, #ffffff, #c2c2c2);
-  background: linear-gradient(top, #ffffff, #c2c2c2);
+  background: -webkit-gradient(linear, 50% 0%, 50% 100%, color-stop(0%, #ffffff), color-stop(50%, #ffffff), color-stop(100%, #c2c2c2));
+  background: -webkit-linear-gradient(top, #ffffff 0%, #ffffff 50%, #c2c2c2 100%);
+  background: -moz-linear-gradient(top, #ffffff 0%, #ffffff 50%, #c2c2c2 100%);
+  background: -o-linear-gradient(top, #ffffff 0%, #ffffff 50%, #c2c2c2 100%);
+  background: linear-gradient(top, #ffffff 0%, #ffffff 50%, #c2c2c2 100%);
 }
 /* line 12, ../sass/partials/builder/_builder.scss */
 .pb-topping:after {
@@ -288,7 +289,7 @@ button {
   left: 47px;
   width: 392px;
   height: 387px;
-  background-image: url(../images/pizza-pepperoni-full.png);
+  background-image: url(../images/pizza-pepperoni-full.gif);
 }
 /* line 25, ../sass/partials/builder/_canvas.scss */
 .pb-canvas .pepperoni-left {
@@ -296,7 +297,7 @@ button {
   left: 47px;
   width: 392px;
   height: 387px;
-  background-image: url(../images/pizza-pepperoni-left.png);
+  background-image: url(../images/pizza-pepperoni-left.gif);
 }
 /* line 33, ../sass/partials/builder/_canvas.scss */
 .pb-canvas .pepperoni-right {
@@ -304,7 +305,7 @@ button {
   left: 47px;
   width: 392px;
   height: 387px;
-  background-image: url(../images/pizza-pepperoni-right.png);
+  background-image: url(../images/pizza-pepperoni-right.gif);
 }
 
 /* line 42, ../sass/partials/builder/_canvas.scss */
@@ -313,17 +314,123 @@ button {
   background-repeat: no-repeat;
 }
 
-/* line 1, ../sass/partials/builder/_toppingsmenu.scss */
+/* line 3, ../sass/partials/builder/_toppingsmenu.scss */
 .pb-toppings-menu {
   position: absolute;
   width: 188px;
   height: 73px;
+  background: #FFFFFF;
+  color: #222222;
+  font-size: 0.7em;
+  font-weight: bold;
+  border: 5px solid rgba(30, 30, 30, 0.4);
+  -webkit-border-radius: 5px;
+  -moz-border-radius: 5px;
+  -ms-border-radius: 5px;
+  -o-border-radius: 5px;
+  border-radius: 5px;
+  -moz-background-clip: border;
+  /* Firefox 3.6 */
+  -webkit-background-clip: border;
+  /* Safari 4? Chrome 6? */
+  background-clip: border-box;
+  /* Firefox 4, Safari 5, Opera 10, IE 9 */
+  -moz-background-clip: padding;
+  /* Firefox 3.6 */
+  -webkit-background-clip: padding;
+  /* Safari 4? Chrome 6? */
+  background-clip: padding-box;
+  /* Firefox 4, Safari 5, Opera 10, IE 9 */
+  -moz-background-clip: content;
+  /* Firefox 3.6 */
+  -webkit-background-clip: content;
+  /* Safari 4? Chrome 6? */
+  background-clip: content-box;
+  /* Firefox 4, Safari 5, Opera 10, IE 9 */
+}
+/* line 15, ../sass/partials/builder/_toppingsmenu.scss */
+.pb-toppings-menu:after, .pb-toppings-menu:before {
+  top: 100%;
+  border: solid transparent;
+  content: " ";
+  height: 0;
+  width: 0;
+  position: absolute;
+  pointer-events: none;
+}
+/* line 25, ../sass/partials/builder/_toppingsmenu.scss */
+.pb-toppings-menu:after {
+  border-color: rgba(51, 51, 51, 0);
+  border-top-color: #333333;
+  border-width: 10px;
+  left: 50%;
+  margin-left: -10px;
+}
+/* line 32, ../sass/partials/builder/_toppingsmenu.scss */
+.pb-toppings-menu:before {
+  border-color: rgba(30, 30, 30, 0);
+  border-top-color: rgba(30, 30, 30, 0.4);
+  border-width: 17px;
+  left: 50%;
+  margin-left: -17px;
 }
 
-/* line 7, ../sass/partials/builder/_toppingsmenu.scss */
+/* line 41, ../sass/partials/builder/_toppingsmenu.scss */
 .pb-topping-selector {
   width: 167px;
   height: 56px;
-  line-height: 73px;
-  margin: 0 auto;
+  line-height: 56px;
+  margin: 7px auto;
+  list-style: none;
+  padding: 0;
+  text-align: center;
+  border: 1px solid #d7d7d7;
+  cursor: pointer;
+  -webkit-border-radius: 5px;
+  -moz-border-radius: 5px;
+  -ms-border-radius: 5px;
+  -o-border-radius: 5px;
+  border-radius: 5px;
+  background: -webkit-gradient(linear, 50% 0%, 50% 100%, color-stop(0%, #ffffff), color-stop(50%, #ffffff), color-stop(100%, #c2c2c2));
+  background: -webkit-linear-gradient(top, #ffffff 0%, #ffffff 50%, #c2c2c2 100%);
+  background: -moz-linear-gradient(top, #ffffff 0%, #ffffff 50%, #c2c2c2 100%);
+  background: -o-linear-gradient(top, #ffffff 0%, #ffffff 50%, #c2c2c2 100%);
+  background: linear-gradient(top, #ffffff 0%, #ffffff 50%, #c2c2c2 100%);
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  user-select: none;
+}
+/* line 57, ../sass/partials/builder/_toppingsmenu.scss */
+.pb-topping-selector li {
+  float: left;
+  width: 55px;
+}
+/* line 60, ../sass/partials/builder/_toppingsmenu.scss */
+.pb-topping-selector li:first-child {
+  border-right: 1px solid #d7d7d7;
+}
+/* line 63, ../sass/partials/builder/_toppingsmenu.scss */
+.pb-topping-selector li:last-child {
+  border-left: 1px solid #d7d7d7;
+}
+/* line 68, ../sass/partials/builder/_toppingsmenu.scss */
+.pb-topping-selector .selected {
+  background: #333333;
+  color: #F3F3F3;
+}
+/* line 72, ../sass/partials/builder/_toppingsmenu.scss */
+.pb-topping-selector .selected:first-child {
+  -webkit-border-radius: 5px 0 0 5px;
+  -moz-border-radius: 5px 0 0 5px;
+  -ms-border-radius: 5px 0 0 5px;
+  -o-border-radius: 5px 0 0 5px;
+  border-radius: 5px 0 0 5px;
+}
+/* line 75, ../sass/partials/builder/_toppingsmenu.scss */
+.pb-topping-selector .selected:last-child {
+  -webkit-border-radius: 0 5px 5px 0;
+  -moz-border-radius: 0 5px 5px 0;
+  -ms-border-radius: 0 5px 5px 0;
+  -o-border-radius: 0 5px 5px 0;
+  border-radius: 0 5px 5px 0;
 }

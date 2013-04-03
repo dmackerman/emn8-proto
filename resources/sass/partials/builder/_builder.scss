@@ -7,7 +7,7 @@
   padding-top      : 65px;
   position         : relative;
   @include border-radius(5px);
-  @include background(linear-gradient(top, #FFFFFF, #C2C2C2));
+  @include chooser-button-gradient;
 
   &:after {
     background-image : url(../images/toppings.png);

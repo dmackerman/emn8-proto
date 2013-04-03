@@ -1,16 +1,81 @@
+$border-color : #D7D7D7;
+
 .pb-toppings-menu {
-  position : absolute;
-  width    : 188px;
-  height   : 73px;
+  position    : absolute;
+  width       : 188px;
+  height      : 73px;
+  background  : #FFFFFF;
+  color       : $dark-font;
+  font-size   : 0.7em;
+  font-weight : bold;
+  border      : 5px solid rgba(30, 30, 30, 0.4);
+  @include border-radius(5px);
+  @include transparent-border;
+
+  &:after, &:before {
+    top            : 100%;
+    border         : solid transparent;
+    content        : " ";
+    height         : 0;
+    width          : 0;
+    position       : absolute;
+    pointer-events : none;
+  }
+
+  &:after {
+    border-color     : rgba(51, 51, 51, 0);
+    border-top-color : #333333;
+    border-width     : 10px;
+    left             : 50%;
+    margin-left      : -10px;
+  }
+  &:before {
+    border-color     : rgba(30, 30, 30, 0);
+    border-top-color : rgba(30, 30, 30, 0.4);
+    border-width     : 17px;
+    left             : 50%;
+    margin-left      : -17px;
+  }
 }
 
 .pb-topping-selector {
   width       : 167px;
+  //height      : 42px;
   height      : 56px;
-  line-height : 73px;
-  margin      : 0 auto;
+  line-height : 56px;
+  margin      : 7px auto;
+  list-style  : none;
+  //padding     : 14px 0 0 0;
+  padding     : 0;
+  text-align  : center;
+  border      : 1px solid $border-color;
+  cursor      : pointer;
+  @include border-radius(5px);
+  @include chooser-button-gradient;
+  @include user-select(none);
 
   li {
+    float : left;
+    width : 55px;
+    &:first-child {
+      border-right : 1px solid $border-color;
+    }
+    &:last-child {
+      border-left : 1px solid $border-color;
+    }
+  }
+
+  .selected {
+    background : #333333;
+    color      : #F3F3F3;
+
+    &:first-child {
+      @include border-radius(5px 0 0 5px);
+    }
+    &:last-child {
+      @include border-radius(0 5px 5px 0);
+    }
+
 
   }
 }

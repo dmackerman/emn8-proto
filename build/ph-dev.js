@@ -1,4 +1,4 @@
-/*! Pizza-Hut-Pilot-App v0.0.1a 2013-04-03 17:48 */
+/*! Pizza-Hut-Pilot-App v0.0.1a 2013-04-03 19:23 */
 /*jslint browser:true */
 /*global $, Marionette */
 
@@ -240,17 +240,22 @@ App.def('App.abstract.Page', {
     /**
      * reference to element placed in DOM
      */
-    el    : undefined,
+    el : undefined,
 
     /**
      * Template element for use with rapid removal and add. It gets cloned to this.el
      */
-    $el   : undefined,
+    $el : undefined,
 
     /**
      * Element ID and Page ID all in one
      */
     id : undefined,
+
+    /**
+     * True to automatically paint the component
+     */
+    autoShow : false,
 
     /**
      * Initialize tpl and/or html
@@ -303,8 +308,10 @@ App.def('App.abstract.Page', {
 
         me.reset();
 
-        me.setHtml(me.tpl(me.data));
-        this.paint();
+        if (me.autoShow === true || me.el) {
+            me.paint();
+        }
+
         me.trigger('update', me, me.data, me.tpl);
     },
 
@@ -326,17 +333,19 @@ App.def('App.abstract.Page', {
 
         el.html(content);
 
-        // helps with performance on consecutive paints
-        setTimeout(function () {
-            me.paint();
-        }, 1);
+        if (me.autoShow === true) {
+            // helps with performance on consecutive paints
+            setTimeout(function () {
+                me.paint();
+            }, 1);
+        }
     },
 
     /**
      * Removes references to element (el and $el)
      * @private
      */
-    reset: function () {
+    reset : function () {
         'use strict';
 
         var me = this;
@@ -359,6 +368,8 @@ App.def('App.abstract.Page', {
 
         me.el = me.$el.clone(true);
 
+        me.trigger('beforepainted', me, me.$el, me.html);
+
         me.el.appendTo(target);
         me.trigger('painted', me, me.$el, me.html);
     },
@@ -375,13 +386,13 @@ App.def('App.abstract.Page', {
         me.remove();
     },
 
-    hide: function () {
+    hide : function () {
         'use strict';
 
         this.el.hide();
     },
 
-    remove: function () {
+    remove : function () {
         'use strict';
 
         var me = this;
@@ -392,7 +403,7 @@ App.def('App.abstract.Page', {
         delete me.el;
     },
 
-    show: function () {
+    show : function () {
         'use strict';
 
         var me = this;
@@ -510,3 +521,48 @@ App.def('App.util.Registry', {
 });
 
 App.reg = App.init('App.util.Registry', 'Jebi', 'se');
+App.def('App.view.builder.ToppingSideChooser', {
+    extend : 'App.abstract.Page',
+    tpl    : [
+        '<div class="pb-toppings-menu">',
+        '<ul class="pb-topping-selector">',
+        '<li>Left</li>',
+        '<li class="selected">Whole</li>',
+        '<li>Right</li>',
+        '</ul>',
+        '</div>'
+    ].join(),
+
+    data : {
+        left  : 0,
+        whole : 1,
+        right : 0
+    },
+
+    xy : undefined,
+
+    init : function (config) {
+        'use strict';
+
+        var me = this;
+        me.$super.init.apply(me, arguments);
+
+        if (me.xy) {
+            me.on('beforepainted', me.showAt, me);
+        }
+    },
+
+    showAt : function () {
+        'use strict';
+
+        var me = this,
+            xy = arguments || me.xy;
+
+        me.el.css({
+            top  : xy[1] + 'px',
+            left : xy[0] + 'px'
+        });
+
+    }
+
+});
