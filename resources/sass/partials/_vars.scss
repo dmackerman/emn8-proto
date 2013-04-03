@@ -9,3 +9,8 @@ $inactive-dark : #2D2D2D;
 $inactive-light : #626262;
 
 $dark-font : #222222;
+
+$query-phones: "only screen and (max-width : 480px)";
+//$query-phones: "only screen and (min-device-width : 320px) and (max-device-width : 480px)";
+$query-phones-retina: "only screen and (-webkit-min-device-pixel-ratio : 1.5), only screen and (min-device-pixel-ratio : 1.5)";
+$query-tablets: "only screen and (min-device-width : 768px) and (max-device-width : 1024px)";

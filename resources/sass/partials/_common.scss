@@ -5,6 +5,9 @@ body {
   letter-spacing    : -0.5px;
   background-repeat : no-repeat;
   font-family       : tahoma, arial, verdana, sans-serif;
+  @media #{$query-phones} {
+    min-width : 240px;
+  }
 }
 
 body.gradient {
@@ -23,6 +26,10 @@ body.gradient {
 #viewport {
   margin : 0 auto;
   width  : 965px;
+  @media #{$query-phones} {
+    margin-top : 140px;
+    width      : 100%;
+  }
 }
 
 #header-container {
@@ -32,6 +39,9 @@ body.gradient {
   outline             : none;
   //text-indent : -5600px;
   height              : 100px;
+  @media #{$query-phones} {
+    display : none;
+  }
 }
 
 #header-menu ul {
@@ -52,18 +62,51 @@ body.gradient {
 #dock {
   position   : fixed;
   bottom     : 0;
-  lelft      : 0;
+  left       : 0;
   width      : 100%;
   background : #000000;
   height     : 100px;
 
+  @media #{$query-phones} {
+    top : 0;
+  //position : relative;
+    &:after {
+      content          : 'Menu';
+      width            : 5em;
+      height           : 2em;
+      background-color : rgba(50, 50, 50, 0.3);
+      color            : white;
+      font-size        : 0.9em;
+      line-height      : 2em;
+      @include border-radius(0 0 8px 8px);
+      bottom           : -2em;
+      right            : 1em;
+      display          : block;
+      text-align       : center;
+      position         : absolute;
+      cursor           : pointer;
+    }
+
+    &:before {
+      content   : 'Welcome Steve';
+      font-size : 1.2em;
+      color     : white;
+      position  : absolute;
+      bottom    : -1.4em;
+      left      : 0.5em;
+      width     : 200px;
+    }
+  }
 }
 
 #footer-main {
-  margin-top : 1.5em;
-  font-size  : 0.8em;
-  text-align : center;
-  margin-bottom: 110px;
+  margin-top    : 1.5em;
+  font-size     : 0.8em;
+  text-align    : center;
+  margin-bottom : 110px;
+  @media #{$query-phones} {
+    margin-bottom : 1em;
+  }
 }
 
 button {
@@ -89,91 +132,6 @@ button {
 
 .clearboth {
   clear : both;
-}
-
-//@import "pizzabuilder";
-
-// Pizza Builder
-.pizza-builder {
-  display          : block;
-  background-color : #222222;;
-  border           : 5px solid #C40010;
-  @include border-radius(5px);
-  @include single-box-shadow(rgba(0, 0, 0, 0.5), 0, 4px, 10px);
-  @include user-select(none);
-}
-
-.pb-dropdowns {
-  text-align    : center;
-  padding       : 10px 0;
-  border-bottom : 1px solid #555555;
-  margin        : 0 auto;
-  width         : 90%;
-
-  select {
-    width : 240px;
-  }
-
-  option {
-
-  }
-}
-
-$topping-selectors-height : 24px;
-
-.pb-toppings {
-  float        : right;
-  text-align   : center;
-  margin-right : 20px;
-  color        : #222222;
-
-  .topping-selectors {
-    list-style  : none;
-    margin      : 1em 0.7em;
-    padding     : 0;
-    font-weight : bold;
-    font-size   : 0.9em;
-    line-height : $topping-selectors-height;
-    height      : $topping-selectors-height;
-
-    li {
-      width  : 50%;
-      float  : left;
-      cursor : pointer;
-      height : $topping-selectors-height;
-      @include inactive-button-gradient;
-      &.selected {
-        @include yellow-button-gradient;
-      }
-      &:first-child {
-        @include border-radius(5px 0 0 5px);
-      }
-      &:last-child {
-        @include border-radius(0 5px 5px 0);
-      }
-    }
-  }
-
-  .toppings {
-    width       : 330px;
-    font-weight : bold;
-    font-size   : 0.7em;
-
-  }
-
-  .pb-continue {
-    height : 40px;
-    width  : 180px;
-
-  }
-
-  footer {
-    font-size  : 0.7em;
-    text-align : center;
-    color      : $highlight-dark;
-    margin     : 4px 0 1em 0;
-  }
-
 }
 
 #content {

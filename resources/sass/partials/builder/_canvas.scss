@@ -1,12 +1,12 @@
 // This is where we build pizza layers
 
 @-webkit-keyframes FadeIn {
-    0% {
-        opacity:0;
-    }
-    100% {
-        opacity:1;
-    }
+  0% {
+    opacity : 0;
+  }
+  100% {
+    opacity : 1;
+  }
 }
 
 .pb-canvas {
@@ -15,42 +15,84 @@
   height      : 460px;
   float       : left;
 
+  @media #{$query-phones} {
+    float  : none;
+    width  : 320px;
+    height : 350px;
+    margin : 0 auto;
+  }
+
   .marinara {
     top              : 0;
     left             : 0;
     width            : 478px;
     height           : 479px;
     background-image : url(../images/pizza-cheese.gif);
+
+    @media #{$query-phones} {
+      background-size : 310px 310px;
+      width           : 310px;
+      height          : 310px;
+      position        : relative;
+      margin          : 0 auto;
+    }
   }
 
   .pepperoni-whole {
-    top              : 58px;
-    left             : 47px;
-    width            : 392px;
-    height           : 387px;
-    background-image : url(../images/pizza-pepperoni-full.gif);
-    -webkit-animation-name: FadeIn;
-    -webkit-animation-timing-function: ease-in;
-    -webkit-animation-duration: 0.1s;
+    top                               : 58px;
+    left                              : 47px;
+    width                             : 392px;
+    height                            : 387px;
+    background-image                  : url(../images/pizza-pepperoni-full.gif);
+    -webkit-animation-name            : FadeIn;
+    -webkit-animation-timing-function : ease-in;
+    -webkit-animation-duration        : 0.1s;
+
+    @media #{$query-phones} {
+      background-size : 250px 250px;
+      width           : 250px;
+      height          : 250px;
+      top             : 35px;
+      left            : 37px;
+    }
   }
 
   .pepperoni-left {
-    top              : 58px;
-    left             : 47px;
-    width            : 392px;
-    height           : 387px;
-    background-image : url(../images/pizza-pepperoni-left.gif);
-    -webkit-animation-name: FadeIn;
-    -webkit-animation-timing-function: ease-in;
-    -webkit-animation-duration: 0.1s;
+    top                               : 58px;
+    left                              : 47px;
+    width                             : 392px;
+    height                            : 387px;
+    background-image                  : url(../images/pizza-pepperoni-left.gif);
+    -webkit-animation-name            : FadeIn;
+    -webkit-animation-timing-function : ease-in;
+    -webkit-animation-duration        : 0.1s;
+
+    @media #{$query-phones} {
+      background-size : 141px 243px;
+      width           : 141px;
+      height          : 243px;
+      top             : 40px;
+      left            : 35px;
+    }
   }
 
   .pepperoni-right {
-    top              : 58px;
-    left             : 233px;
-    width            : 392px;
-    height           : 387px;
-    background-image : url(../images/pizza-pepperoni-right.gif);
+    top                               : 58px;
+    left                              : 233px;
+    width                             : 392px;
+    height                            : 387px;
+    background-image                  : url(../images/pizza-pepperoni-right.gif);
+    -webkit-animation-name            : FadeIn;
+    -webkit-animation-timing-function : ease-in;
+    -webkit-animation-duration        : 0.1s;
+
+    @media #{$query-phones} {
+      background-size : 130px 249px;
+      width           : 130px;
+      height          : 240px;
+      top             : 34px;
+      left            : 161px;
+    }
   }
 }
 
