@@ -30,6 +30,10 @@ App.def('App.abstract.Page', {
      */
     applyTo : undefined,
 
+    el    : undefined,
+    $el   : undefined,
+    $elId : undefined,
+
     init : function () {
         'use strict';
         var me = this;
@@ -62,6 +66,7 @@ App.def('App.abstract.Page', {
     initHtml : function () {
         'use strict';
         this.setHtml();
+        this.paint();
     },
 
     setData : function (data) {
@@ -73,34 +78,78 @@ App.def('App.abstract.Page', {
             me.data = data;
         }
         me.setHtml(me.tpl(me.data));
+        this.paint();
         me.trigger('update', me, me.data, me.tpl);
     },
 
-    setHtml : function (html, target) {
+    setHtml : function (html) {
         'use strict';
 
         var me = this,
-            to = target || me.applyTo,
             content = html || me.html,
+            el = me.$el,
+            id = me.$elId || _.uniqueId('page_');
 
-            fragment = me.$fragment || document.createDocumentFragment(),
-            div = me.$el,
-            el;
-
-        if (!div) {
-            div = document.createElement('div');
-            div.id = _.uniqueId('page_');
+        if (!el) {
+            me.$el = el = $(document.createElement('div')).attr('id', id);
         }
 
-        div.innerHTML = content;
+        el.html(content);
+    },
 
-        fragment.appendChild(div);
-        el = fragment.cloneNode(true);
-        $(to).append(el);
+    paint : function (target) {
+        'use strict';
 
-        _.extend(me, {
-            $fragment : fragment,
-            $el       : el
-        });
+        var me = this;
+
+        if (me.el) {
+            // already painted
+            return false;
+        }
+
+        target = target || me.applyTo;
+
+        me.el = me.$el.clone(true);
+
+        me.el.appendTo(target);
+        me.trigger('painted', me, me.$el, me.html);
+    },
+
+    destroy : function () {
+        'use strict';
+
+        var me = this;
+
+        // remove listeners
+        me.off();
+
+        // remove dom
+        me.remove();
+    },
+
+    hide: function () {
+        'use strict';
+
+        this.el.hide();
+    },
+
+    remove: function () {
+        'use strict';
+
+        var me = this;
+        me.el.remove();
+        delete me.el;
+    },
+
+    show: function () {
+        'use strict';
+
+        var me = this;
+
+        if (me.el) {
+            return me.el.show();
+        }
+
+        return me.paint();
     }
 });
