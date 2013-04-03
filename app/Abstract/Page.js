@@ -30,23 +30,41 @@ App.def('App.abstract.Page', {
      */
     applyTo : undefined,
 
+    /**
+     * reference to element placed in DOM
+     */
     el    : undefined,
-    $el   : undefined,
-    $elId : undefined,
 
+    /**
+     * Template element for use with rapid removal and add. It gets cloned to this.el
+     */
+    $el   : undefined,
+
+    /**
+     * Element ID and Page ID all in one
+     */
+    id : undefined,
+
+    /**
+     * Initialize tpl and/or html
+     */
     init : function () {
         'use strict';
         var me = this;
 
+        // Call superclass
         me.$super.init.apply(me, arguments);
 
         if (_.isString(me.tpl)) {
             me.initTpl();
         } else if (_.isString(me.html)) {
-            me.initHtml();
+            me.setHtml();
         }
     },
 
+    /**
+     * Initialize and compile template
+     */
     initTpl : function () {
         'use strict';
 
@@ -63,12 +81,10 @@ App.def('App.abstract.Page', {
         }
     },
 
-    initHtml : function () {
-        'use strict';
-        this.setHtml();
-        this.paint();
-    },
-
+    /**
+     * Update template with object data
+     * @param data
+     */
     setData : function (data) {
         'use strict';
 
@@ -77,24 +93,49 @@ App.def('App.abstract.Page', {
         if (data) {
             me.data = data;
         }
+
+        me.reset();
+
         me.setHtml(me.tpl(me.data));
         this.paint();
         me.trigger('update', me, me.data, me.tpl);
     },
 
+    /**
+     * Set html content
+     * @param html
+     */
     setHtml : function (html) {
         'use strict';
 
         var me = this,
             content = html || me.html,
             el = me.$el,
-            id = me.$elId || _.uniqueId('page_');
+            id = me.id || _.uniqueId('page_');
 
         if (!el) {
             me.$el = el = $(document.createElement('div')).attr('id', id);
         }
 
         el.html(content);
+
+        // helps with performance on consecutive paints
+        setTimeout(function () {
+            me.paint();
+        }, 1);
+    },
+
+    /**
+     * Removes references to element (el and $el)
+     * @private
+     */
+    reset: function () {
+        'use strict';
+
+        var me = this;
+
+        me.remove();
+        delete me.el;
     },
 
     paint : function (target) {
@@ -137,7 +178,10 @@ App.def('App.abstract.Page', {
         'use strict';
 
         var me = this;
-        me.el.remove();
+
+        if (me.el) {
+            me.el.remove();
+        }
         delete me.el;
     },
 
