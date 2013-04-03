@@ -45,15 +45,15 @@ App.def('App.controller.Pizza', {
             pos = $(ev.currentTarget).offset();
 
 
-//        me.showMenu(ev.clientX, ev.clientY);
+        //        me.showMenu(ev.clientX, ev.clientY);
         me.showMenu(pos.left + 35 - 97, pos.top - 40, type);
         console.log(ev);
 
         if (exists.length > 0) {
-//            return exists.remove();
+            //            return exists.remove();
         }
 
-//        canvas.append('<div class="' + type + '"></div>');
+        //        canvas.append('<div class="' + type + '"></div>');
     },
 
     /**
@@ -105,7 +105,9 @@ App.def('App.controller.Pizza', {
 
         var me = this,
             html,
-            el;
+            el,
+            exists,
+            side;
 
         html = [
             '<div class="pb-toppings-menu">',
@@ -126,11 +128,18 @@ App.def('App.controller.Pizza', {
             left : x + 'px'
         });
 
-        $('.pb-toppings-menu li').on('click', {me: me, type: type}, me.showTopping);
+        exists = me.findTopping(new RegExp("(.*)" + type + "(.*)"));
+        if (exists.length > 0) {
+            side = exists[0].className.replace(type, "");
+        }
+
+        $('.pb-toppings-menu li.side' + side).addClass('selected');
+
+        $('.pb-toppings-menu li').on('click', {me : me, type : type}, me.showTopping);
 
     },
 
-    showTopping: function (ev) {
+    showTopping : function (ev) {
         'use strict';
 
         var me = ev.data.me,
@@ -139,9 +148,9 @@ App.def('App.controller.Pizza', {
             canvas = me.getCanvas(),
             where = this.className.match(/side\-(\S*)/)[1],
             exists = canvas.children('.' + type + '-' + where),
-            pattern = new RegExp(type  + "-(\S*)");
+            pattern = new RegExp(type + "-(\S*)");
 
-//        console.log(ev.data);
+        //        console.log(ev.data);
 
         //remove all
         me.findTopping(pattern).remove();
@@ -155,7 +164,7 @@ App.def('App.controller.Pizza', {
         el.addClass('selected');
     },
 
-    findTopping: function (regexp) {
+    findTopping : function (regexp) {
         'use strict';
 
         var me = this,
@@ -163,7 +172,7 @@ App.def('App.controller.Pizza', {
             els = canvas.children(),
             found;
 
-        found = els.filter(function() {
+        found = els.filter(function () {
             return this.className.match(regexp);
         });
 
