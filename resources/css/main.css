@@ -258,14 +258,30 @@ body.gradient {
   height: 387px;
   background-image: url(../images/pizza-pepperoni-full.png);
 }
+/* line 249, ../sass/main.scss */
+.pb-canvas .pepperoni-left {
+  top: 58px;
+  left: 47px;
+  width: 392px;
+  height: 387px;
+  background-image: url(../images/pizza-pepperoni-left.png);
+}
+/* line 257, ../sass/main.scss */
+.pb-canvas .pepperoni-right {
+  top: 58px;
+  left: 47px;
+  width: 392px;
+  height: 387px;
+  background-image: url(../images/pizza-pepperoni-right.png);
+}
 
-/* line 250, ../sass/main.scss */
+/* line 266, ../sass/main.scss */
 .pb-canvas > div {
   position: absolute;
   background-repeat: no-repeat;
 }
 
-/* line 256, ../sass/main.scss */
+/* line 272, ../sass/main.scss */
 button {
   padding: 2px 15px;
   border: 1px solid #E4B000;
@@ -292,7 +308,7 @@ button {
   border-radius: 3px;
 }
 
-/* line 277, ../sass/main.scss */
+/* line 293, ../sass/main.scss */
 .clearboth {
   clear: both;
 }

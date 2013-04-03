@@ -1,4 +1,4 @@
-/*! Pizza-Hut-Pilot-App v0.0.1a 2013-04-02 22:27 */
+/*! Pizza-Hut-Pilot-App v0.0.1a 2013-04-03 13:23 */
 /*jslint browser:true */
 /*global $, Marionette */
 
@@ -26,6 +26,8 @@ $(function () {
 App.util = {};
 
 (function () {
+    'use strict';
+
     var u = App.util,
         nsCache = {},
         arraySlice = Array.prototype.slice;
@@ -36,10 +38,10 @@ App.util = {};
         /**
          * Create a custom namespace. Allows deep creation
          * @param {String} ns
-         * @param {Mixed} value
+         * @param {Object} value
          */
         ns : function (ns, value) {
-            if (typeof ns != 'string') {
+            if (!_.isString(ns)) {
                 throw new Error("Invalid namespace, must be a string");
             }
 
@@ -49,18 +51,18 @@ App.util = {};
             }
 
             var parts = ns.split('.'),
-                i = 0,
                 last = parts.length - 1,
                 lastNs = parts[last],
                 parent = window,
                 part,
-                obj;
+                obj,
+                i;
 
             if (last > 0) {
-                for (; i < last; i++) {
+                for (i = 0; i < last; i += 1) {
                     part = parts[i];
                     obj = parent[part];
-                    if (typeof obj !== 'object') {
+                    if (!_.isObject(obj)) {
                         parent[part] = {};
                     }
                     parent = parent[part];
@@ -81,17 +83,17 @@ App.util = {};
          */
         def : function (ns, config) {
             var Base = App.abstract ? App.abstract.BaseClass : function () {},
-                extend = config.extend ? u.ns(config.extend) : Base,
+                Extend = config.extend ? u.ns(config.extend) : Base,
                 initializing = false,
                 prototype,
                 Class;
 
             _.extend(config, {
-                _super : extend.prototype
+                $super : Extend.prototype
             });
 
             initializing = true;
-            prototype = new extend();
+            prototype = new Extend();
             initializing = false;
 
             _.extend(prototype, config);
@@ -100,14 +102,13 @@ App.util = {};
                 if (!initializing && this.init) {
                     this.init.apply(this, arguments);
                 }
-            }
+            };
 
             Class.prototype = prototype;
 
             _.extend(Class.prototype, {
                 constructor  : Class,
-                "$className" : ns,
-                "$super"     : Base.prototype
+                "$className" : ns
             });
 
             u.ns(ns, Class);
@@ -118,20 +119,20 @@ App.util = {};
          * @param {String} ns
          */
         init : function (ns) {
-            var name = arguments[0],
+            var a = arguments,
+                name = a[0],
                 args = arraySlice.call(arguments, 1),
                 cls;
 
-            if (typeof name != 'function') {
+            if (!_.isFunction(name)) {
                 //<debug error>
-                if ((typeof name != 'string' || name.length < 1)) {
+                if (!_.isString(name) || name.length < 1) {
                     throw new Error("Invalid class name '" + name.toString() + "' specified, must be a non-empty string");
                 }
                 //</debug>
 
                 cls = u.ns(name);
-            }
-            else {
+            } else {
                 cls = name;
             }
 
@@ -139,7 +140,7 @@ App.util = {};
                 throw new Error("Cannot create an instance of unrecognized class name: " + name.toString());
             }
 
-            if (typeof cls != 'function') {
+            if (!_.isFunction(cls)) {
                 throw new Error(name.toString() + "' is a singleton and cannot be instantiated");
             }
 
@@ -147,8 +148,10 @@ App.util = {};
         },
 
         instantiator : function (args) {
-            var q = [];
-            for (var i = 0; i < args.length; i++) {
+            var q = [],
+                i;
+
+            for (i = 0; i < args.length; i += 1) {
                 q.push("a[" + i + "]");
             }
 
@@ -164,7 +167,7 @@ App.util = {};
         def   : u.def,
         init  : u.init,
         ns    : u.ns
-    })
+    });
 }());
 
 
@@ -183,13 +186,23 @@ App.def('App.util.Controller', {
 });
 
 App.def('App.abstract.BaseClass', {
-    init: function () {
-        _.extend(this, Backbone.Events);
-        this.trigger('init', this, arguments);
+    init: function (config) {
+        'use strict';
+        var me = this;
+
+        _.extend(me, Backbone.Events);
+        me.trigger('init', me, arguments);
+        me.initConfig(config);
     },
 
     callParent: function (fn, args, scope) {
+        'use strict';
         this.$super[fn].apply(scope || this, args);
+    },
+
+    initConfig: function (config) {
+        'use strict';
+        _.extend(this, config);
     }
 });
 /**
@@ -207,30 +220,144 @@ App.def('App.abstract.Page', {
      * '<div>{[for (i in obj) {print obj[i];}]}</div'>
      *
      */
-    tpl: '',
+    tpl : undefined,
 
     /**
      * Template data object
      */
-    data: undefined,
+    data : undefined,
 
+    /**
+     * Plain html to be used instead of template
+     */
+    html : undefined,
 
-    init: function () {
-        // sve the original string
-        this.$tpl = this.tpl;
+    /**
+     * DOM node to apply html to
+     */
+    applyTo : undefined,
 
-        // compile the template
-        this.tpl = _.template(this.tpl);
+    el    : undefined,
+    $el   : undefined,
+    $elId : undefined,
 
-        if (_.isObject(this.data) || _.isArray(this.data)) {
-            this.setData(data);
+    init : function () {
+        'use strict';
+        var me = this;
+
+        me.$super.init.apply(me, arguments);
+
+        if (_.isString(me.tpl)) {
+            me.initTpl();
+        } else if (_.isString(me.html)) {
+            me.initHtml();
         }
     },
 
-    setData: function (data) {
-        this.data = data;
-        this.tpl()
-        this.trigger('update', this, data);
+    initTpl : function () {
+        'use strict';
+
+        var me = this;
+
+        // save the original string
+        me.$tpl = me.tpl;
+
+        // compile the template
+        me.tpl = _.template(me.tpl);
+
+        if (_.isObject(me.data) || _.isArray(me.data)) {
+            me.setData();
+        }
+    },
+
+    initHtml : function () {
+        'use strict';
+        this.setHtml();
+        this.paint();
+    },
+
+    setData : function (data) {
+        'use strict';
+
+        var me = this;
+
+        if (data) {
+            me.data = data;
+        }
+        me.setHtml(me.tpl(me.data));
+        this.paint();
+        me.trigger('update', me, me.data, me.tpl);
+    },
+
+    setHtml : function (html) {
+        'use strict';
+
+        var me = this,
+            content = html || me.html,
+            el = me.$el,
+            id = me.$elId || _.uniqueId('page_');
+
+        if (!el) {
+            me.$el = el = $(document.createElement('div')).attr('id', id);
+        }
+
+        el.html(content);
+    },
+
+    paint : function (target) {
+        'use strict';
+
+        var me = this;
+
+        if (me.el) {
+            // already painted
+            return false;
+        }
+
+        target = target || me.applyTo;
+
+        me.el = me.$el.clone(true);
+
+        me.el.appendTo(target);
+        me.trigger('painted', me, me.$el, me.html);
+    },
+
+    destroy : function () {
+        'use strict';
+
+        var me = this;
+
+        // remove listeners
+        me.off();
+
+        // remove dom
+        me.remove();
+    },
+
+    hide: function () {
+        'use strict';
+
+        this.el.hide();
+    },
+
+    remove: function () {
+        'use strict';
+
+        var me = this;
+        me.el.remove();
+        delete me.el;
+    },
+
+    show: function () {
+        'use strict';
+
+        var me = this;
+
+        if (me.el) {
+            return me.el.show();
+        }
+
+        return me.paint();
     }
 });
 $(function () {
@@ -241,31 +368,54 @@ $(function () {
 
 App.def('App.controller.Pizza', {
     extend : 'App.util.Controller',
-    init   : function () {
+
+    /**
+     * Cached reference to canvas
+     */
+    canvas : undefined,
+
+    /**
+     * Cached reference to canvas
+     */
+    builder : undefined,
+
+    init : function () {
         'use strict';
+
+        var builder = this.builder = $(".pizza-builder");
 
         App.controllers.Pizza = this;
 
-        $(".pizza-builder").delegate(".pb-topping", "click", this.onToppingClick);
-        $(".pizza-builder").delegate(".topping-selectors li", "click", this.onToppingGroupClick);
+        builder.delegate(".pb-topping", "click", {me : this}, this.onToppingClick);
+        builder.delegate(".topping-selectors li", "click", this.onToppingGroupClick);
     },
 
-    onToppingClick: function () {
+    /**
+     * When user selects a topping, add it's layer on top of pizza
+     * If already there, remove it
+     * @param ev
+     * @returns {*}
+     */
+    onToppingClick : function (ev) {
         'use strict';
 
-        var type = this.className.replace(/(\W*)pb\-topping(\W*)/, ''),
+        var me = ev.data.me,
+            type = this.className.replace(/(\W*)pb\-topping(\W*)/, ''),
             selector = '.' + type,
-            canvas = $('.pb-canvas'),
+            canvas = me.getCanvas(),
             exists = canvas.children(selector);
 
-        if (exists.length>0) {
+        if (exists.length > 0) {
             return exists.remove();
         }
 
         canvas.append('<div class="' + type + '"></div>');
     },
 
-    onToppingGroupClick: function () {
+    /**
+     * Switch topping group
+     */
+    onToppingGroupClick : function () {
         'use strict';
 
         var el = $(this),
@@ -282,10 +432,37 @@ App.def('App.controller.Pizza', {
 
         //todo: now load that group
 
+    },
+
+    /**
+     * Cache the reference to canvas
+     * @returns {*}
+     */
+    getCanvas : function () {
+        'use strict';
+
+        var me = this,
+            canvas = me.canvas;
+
+        if (canvas) {
+            return canvas;
+        }
+
+        canvas = me.canvas = me.builder.children('.pb-canvas');
+
+        return canvas;
     }
 });
 
-
+(function () {
+    'use strict';
+    var dom = function () {};
+    _.extend(dom, {
+        on: function (selector, event, callback, scope) {
+            $(selector).on(event, callback)
+        }
+    });
+}());
 App.def('App.util.Registry', {
     init : function () {
         this.model = Backbone.Model.extend({});

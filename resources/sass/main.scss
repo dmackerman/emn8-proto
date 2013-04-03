@@ -245,6 +245,22 @@ $topping-selectors-height : 24px;
     height           : 387px;
     background-image : url(../images/pizza-pepperoni-full.png);
   }
+
+  .pepperoni-left {
+    top              : 58px;
+    left             : 47px;
+    width            : 392px;
+    height           : 387px;
+    background-image : url(../images/pizza-pepperoni-left.png);
+  }
+
+  .pepperoni-right {
+    top              : 58px;
+    left             : 47px;
+    width            : 392px;
+    height           : 387px;
+    background-image : url(../images/pizza-pepperoni-right.png);
+  }
 }
 
 .pb-canvas > div {
