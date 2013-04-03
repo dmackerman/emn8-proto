@@ -1,4 +1,4 @@
-/*! Pizza-Hut-Pilot-App v0.0.1a 2013-04-03 19:23 */
+/*! Pizza-Hut-Pilot-App v0.0.1a 2013-04-03 20:49 */
 /*jslint browser:true */
 /*global $, Marionette */
 
@@ -458,7 +458,13 @@ App.def('App.controller.Pizza', {
             type = this.className.replace(/(\W*)pb\-topping(\W*)/, ''),
             selector = '.' + type,
             canvas = me.getCanvas(),
-            exists = canvas.children(selector);
+            exists = canvas.children(selector),
+            pos = $(ev.currentTarget).offset();
+
+
+//        me.showMenu(ev.clientX, ev.clientY);
+        me.showMenu(pos.left + 35 - 97, pos.top - 40);
+        console.log(ev);
 
         if (exists.length > 0) {
             return exists.remove();
@@ -506,6 +512,37 @@ App.def('App.controller.Pizza', {
         canvas = me.canvas = me.builder.children('.pb-canvas');
 
         return canvas;
+    },
+
+    /**
+     * This should belong to a Page, but is now here for lack of time
+     */
+    showMenu : function (x, y, ev) {
+        'use strict';
+
+        var me = this,
+            html;
+
+        console.log(x,y);
+
+        html = [
+            '<div class="pb-toppings-menu">',
+            '<ul class="pb-topping-selector">',
+            '<li>Left</li>',
+            '<li class="selected">Whole</li>',
+            '<li>Right</li>',
+            '</ul>',
+            '</div>'
+        ].join('');
+
+        $('.pb-toppings-menu').remove();
+
+        $('body').append(html);
+
+        $('.pb-toppings-menu').css({
+            top  : y + 'px',
+            left : x + 'px'
+        });
     }
 });
 
@@ -556,7 +593,7 @@ App.def('App.view.builder.ToppingSideChooser', {
         'use strict';
 
         var me = this,
-            xy = arguments || me.xy;
+            xy = (_.isNumeric(arguments[0]) && _.isNumeric(arguments[1])) ? arguments : me.xy;
 
         me.el.css({
             top  : xy[1] + 'px',

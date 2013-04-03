@@ -268,14 +268,26 @@ button {
   height: 46px;
 }
 
-/* line 3, ../sass/partials/builder/_canvas.scss */
+@-webkit-keyframes FadeIn {
+  /* line 4, ../sass/partials/builder/_canvas.scss */
+  0% {
+    opacity: 0;
+  }
+
+  /* line 7, ../sass/partials/builder/_canvas.scss */
+  100% {
+    opacity: 1;
+  }
+}
+
+/* line 12, ../sass/partials/builder/_canvas.scss */
 .pb-canvas {
   position: relative;
   margin-left: 20px;
   height: 460px;
   float: left;
 }
-/* line 9, ../sass/partials/builder/_canvas.scss */
+/* line 18, ../sass/partials/builder/_canvas.scss */
 .pb-canvas .marinara {
   top: 0;
   left: 0;
@@ -283,23 +295,29 @@ button {
   height: 479px;
   background-image: url(../images/pizza-cheese.gif);
 }
-/* line 17, ../sass/partials/builder/_canvas.scss */
+/* line 26, ../sass/partials/builder/_canvas.scss */
 .pb-canvas .pepperoni {
   top: 58px;
   left: 47px;
   width: 392px;
   height: 387px;
   background-image: url(../images/pizza-pepperoni-full.gif);
+  -webkit-animation-name: FadeIn;
+  -webkit-animation-timing-function: ease-in;
+  -webkit-animation-duration: 0.1s;
 }
-/* line 25, ../sass/partials/builder/_canvas.scss */
+/* line 37, ../sass/partials/builder/_canvas.scss */
 .pb-canvas .pepperoni-left {
   top: 58px;
   left: 47px;
   width: 392px;
   height: 387px;
   background-image: url(../images/pizza-pepperoni-left.gif);
+  -webkit-animation-name: FadeIn;
+  -webkit-animation-timing-function: ease-in;
+  -webkit-animation-duration: 0.1s;
 }
-/* line 33, ../sass/partials/builder/_canvas.scss */
+/* line 48, ../sass/partials/builder/_canvas.scss */
 .pb-canvas .pepperoni-right {
   top: 58px;
   left: 47px;
@@ -308,7 +326,7 @@ button {
   background-image: url(../images/pizza-pepperoni-right.gif);
 }
 
-/* line 42, ../sass/partials/builder/_canvas.scss */
+/* line 57, ../sass/partials/builder/_canvas.scss */
 .pb-canvas > div {
   position: absolute;
   background-repeat: no-repeat;

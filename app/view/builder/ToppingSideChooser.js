@@ -33,7 +33,7 @@ App.def('App.view.builder.ToppingSideChooser', {
         'use strict';
 
         var me = this,
-            xy = arguments || me.xy;
+            xy = (_.isNumeric(arguments[0]) && _.isNumeric(arguments[1])) ? arguments : me.xy;
 
         me.el.css({
             top  : xy[1] + 'px',

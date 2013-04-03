@@ -1,0 +1,22 @@
+Helpful URLS
+==================
+http://api.jquery.com/
+http://underscorejs.org/
+http://backbonejs.org/
+
+
+http://net.tutsplus.com/tutorials/javascript-ajax/meeting-grunt-the-build-tool-for-javascript/
+http://www.nytimes.com/2012/03/01/technology/impatient-web-users-flee-slow-loading-sites.html?pagewanted=all&_r=1&#commentsContainer
+http://www.html5rocks.com/en/mobile/optimization-and-performance/
+http://gregfranko.com/blog/using-backbone-dot-js-with-require-dot-js/
+https://github.com/marionettejs/backbone.marionette/wiki
+https://github.com/jsoverson/todomvc/blob/master/labs/dependency-examples/backbone_marionette_require/js/app.js
+http://compass-style.org/reference/
+http://cssarrowplease.com/
+
+http://grgur.com/ph/
+
+https://www.hipchat.com/g7JqRigw9
+http://jira:8080/secure/RapidBoard.jspa?rapidView=17&view=detail&selectedIssue=EP-1487
+http://slasvn01.emn8.com/svn/mobilem8/mobilem8-applications/ROOT/mobilem8-client-applications/pizzahut-browser-app/
+https://phdev1.emn8.com/#!home

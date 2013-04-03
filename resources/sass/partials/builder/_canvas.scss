@@ -1,5 +1,14 @@
 // This is where we build pizza layers
 
+@-webkit-keyframes FadeIn {
+    0% {
+        opacity:0;
+    }
+    100% {
+        opacity:1;
+    }
+}
+
 .pb-canvas {
   position    : relative;
   margin-left : 20px;
@@ -20,6 +29,9 @@
     width            : 392px;
     height           : 387px;
     background-image : url(../images/pizza-pepperoni-full.gif);
+    -webkit-animation-name: FadeIn;
+    -webkit-animation-timing-function: ease-in;
+    -webkit-animation-duration: 0.1s;
   }
 
   .pepperoni-left {
@@ -28,6 +40,9 @@
     width            : 392px;
     height           : 387px;
     background-image : url(../images/pizza-pepperoni-left.gif);
+    -webkit-animation-name: FadeIn;
+    -webkit-animation-timing-function: ease-in;
+    -webkit-animation-duration: 0.1s;
   }
 
   .pepperoni-right {
