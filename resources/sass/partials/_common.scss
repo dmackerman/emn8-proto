@@ -63,6 +63,7 @@ body.gradient {
   margin-top : 1.5em;
   font-size  : 0.8em;
   text-align : center;
+  margin-bottom: 110px;
 }
 
 button {
@@ -172,5 +173,9 @@ $topping-selectors-height : 24px;
     color      : $highlight-dark;
     margin     : 4px 0 1em 0;
   }
+
+}
+
+#content {
 
 }

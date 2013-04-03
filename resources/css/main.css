@@ -70,9 +70,10 @@ body.gradient {
   margin-top: 1.5em;
   font-size: 0.8em;
   text-align: center;
+  margin-bottom: 110px;
 }
 
-/* line 68, ../sass/partials/_common.scss */
+/* line 69, ../sass/partials/_common.scss */
 button {
   padding: 2px 15px;
   border: 1px solid #E4B000;
@@ -99,12 +100,12 @@ button {
   border-radius: 3px;
 }
 
-/* line 89, ../sass/partials/_common.scss */
+/* line 90, ../sass/partials/_common.scss */
 .clearboth {
   clear: both;
 }
 
-/* line 96, ../sass/partials/_common.scss */
+/* line 97, ../sass/partials/_common.scss */
 .pizza-builder {
   display: block;
   background-color: #222222;
@@ -122,7 +123,7 @@ button {
   user-select: none;
 }
 
-/* line 105, ../sass/partials/_common.scss */
+/* line 106, ../sass/partials/_common.scss */
 .pb-dropdowns {
   text-align: center;
   padding: 10px 0;
@@ -130,19 +131,19 @@ button {
   margin: 0 auto;
   width: 90%;
 }
-/* line 112, ../sass/partials/_common.scss */
+/* line 113, ../sass/partials/_common.scss */
 .pb-dropdowns select {
   width: 240px;
 }
 
-/* line 123, ../sass/partials/_common.scss */
+/* line 124, ../sass/partials/_common.scss */
 .pb-toppings {
   float: right;
   text-align: center;
   margin-right: 20px;
   color: #222222;
 }
-/* line 129, ../sass/partials/_common.scss */
+/* line 130, ../sass/partials/_common.scss */
 .pb-toppings .topping-selectors {
   list-style: none;
   margin: 1em 0.7em;
@@ -152,7 +153,7 @@ button {
   line-height: 24px;
   height: 24px;
 }
-/* line 138, ../sass/partials/_common.scss */
+/* line 139, ../sass/partials/_common.scss */
 .pb-toppings .topping-selectors li {
   width: 50%;
   float: left;
@@ -165,7 +166,7 @@ button {
   background: -o-linear-gradient(top, #2d2d2d, #626262);
   background: linear-gradient(top, #2d2d2d, #626262);
 }
-/* line 144, ../sass/partials/_common.scss */
+/* line 145, ../sass/partials/_common.scss */
 .pb-toppings .topping-selectors li.selected {
   color: #222222;
   background: -webkit-gradient(linear, 50% 0%, 50% 100%, color-stop(0%, #ffd441), color-stop(48%, #ffd135), color-stop(52%, #ffc707), color-stop(100%, #ffc911));
@@ -174,7 +175,7 @@ button {
   background: -o-linear-gradient(top, #ffd441, #ffd135 48%, #ffc707 52%, #ffc911);
   background: linear-gradient(top, #ffd441, #ffd135 48%, #ffc707 52%, #ffc911);
 }
-/* line 147, ../sass/partials/_common.scss */
+/* line 148, ../sass/partials/_common.scss */
 .pb-toppings .topping-selectors li:first-child {
   -webkit-border-radius: 5px 0 0 5px;
   -moz-border-radius: 5px 0 0 5px;
@@ -182,7 +183,7 @@ button {
   -o-border-radius: 5px 0 0 5px;
   border-radius: 5px 0 0 5px;
 }
-/* line 150, ../sass/partials/_common.scss */
+/* line 151, ../sass/partials/_common.scss */
 .pb-toppings .topping-selectors li:last-child {
   -webkit-border-radius: 0 5px 5px 0;
   -moz-border-radius: 0 5px 5px 0;
@@ -190,18 +191,18 @@ button {
   -o-border-radius: 0 5px 5px 0;
   border-radius: 0 5px 5px 0;
 }
-/* line 156, ../sass/partials/_common.scss */
+/* line 157, ../sass/partials/_common.scss */
 .pb-toppings .toppings {
   width: 330px;
   font-weight: bold;
   font-size: 0.7em;
 }
-/* line 163, ../sass/partials/_common.scss */
+/* line 164, ../sass/partials/_common.scss */
 .pb-toppings .pb-continue {
   height: 40px;
   width: 180px;
 }
-/* line 169, ../sass/partials/_common.scss */
+/* line 170, ../sass/partials/_common.scss */
 .pb-toppings footer {
   font-size: 0.7em;
   text-align: center;
