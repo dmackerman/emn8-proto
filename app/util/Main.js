@@ -7,6 +7,9 @@ App.util = {};
         nsCache = {},
         arraySlice = Array.prototype.slice;
 
+    //optimize events
+    App.clickEvent = window.Touch ? 'touchstart' : 'click';
+
     _.extend(u, {
         emptyFn : function () {},
 

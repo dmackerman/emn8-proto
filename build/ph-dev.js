@@ -1,4 +1,4 @@
-/*! Pizza-Hut-Pilot-App v0.0.1a 2013-04-04 17:01 */
+/*! Pizza-Hut-Pilot-App v0.0.1a 2013-04-04 18:52 */
 /*jslint browser:true */
 /*global $, Marionette */
 
@@ -31,6 +31,9 @@ App.util = {};
     var u = App.util,
         nsCache = {},
         arraySlice = Array.prototype.slice;
+
+    //optimize events
+    App.clickEvent = window.Touch ? 'touchstart' : 'click';
 
     _.extend(u, {
         emptyFn : function () {},
@@ -436,9 +439,22 @@ App.def('App.controller.Pizza', {
 
         App.controllers.Pizza = me;
 
-        builder.delegate(".pb-topping", "click", {me : me}, me.onToppingClick);
-        builder.delegate(".topping-selectors li", "click", me.onToppingGroupClick);
+//        builder.delegate(".pb-topping", "touch", {me : me}, function (event) { alert('xx')});
+        builder.delegate(".pb-topping", App.clickEvent, {me : me}, me.onToppingClick);
+        builder.delegate(".topping-selectors li", App.clickEvent, me.onToppingGroupClick);
         $(document).on('click', {me : me}, me.clearMenus);
+
+        me.cacheConstants();
+    },
+
+    cacheConstants: function () {
+        'use strict';
+
+        _.extend(this, {
+            regSideType : /side\-(\S*)/,
+            regTypes: {}
+        });
+
     },
 
     /**
@@ -550,7 +566,7 @@ App.def('App.controller.Pizza', {
 
         $('.pb-toppings-menu li.side' + side).addClass('selected');
 
-        $('.pb-toppings-menu li').on('click', {me : me, type : type}, me.showTopping);
+        $('.pb-toppings-menu li').bind(App.clickEvent, {me : me, type : type}, me.showTopping);
     },
 
     showTopping : function (ev) {
@@ -560,9 +576,15 @@ App.def('App.controller.Pizza', {
             type = ev.data.type,
             el = $(this),
             canvas = me.getCanvas(),
-            where = this.className.match(/side\-(\S*)/)[1],
-            exists = canvas.children('.' + type + '-' + where),
-            pattern = new RegExp(type + "-(\S*)");
+            where = this.className.match(me.regSideType)[1],
+//            exists = canvas.children('.' + type + '-' + where),
+            pattern;
+
+        if (!me.regTypes[type]) {
+            me.regTypes[type] = new RegExp(type + "-(\S*)");
+        }
+
+        pattern = me.regTypes[type];
 
         //remove all
         me.findTopping(pattern).remove();
@@ -572,8 +594,10 @@ App.def('App.controller.Pizza', {
             return el.removeClass('selected');
         }
 
-        canvas.append('<div class="' + type + '-' + where + '"></div>');
-        el.addClass('selected');
+        setTimeout(function () {
+            canvas.append('<div class="' + type + '-' + where + '"></div>');
+            el.addClass('selected');
+        }, 1);
     },
 
     findTopping : function (regexp) {
