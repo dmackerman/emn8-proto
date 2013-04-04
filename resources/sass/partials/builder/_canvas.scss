@@ -27,9 +27,10 @@
     left             : 0;
     width            : 478px;
     height           : 479px;
-    background-image : url(../images/pizza-cheese.gif);
+    background-image : url(#{$path-desktop}/pizza-cheese.gif);
 
     @media #{$query-phones} {
+      background-image: url(#{$path-phone}/pizza-cheese.gif);
       background-size : 310px 310px;
       width           : 310px;
       height          : 310px;
@@ -43,12 +44,13 @@
     left                              : 47px;
     width                             : 392px;
     height                            : 387px;
-    background-image                  : url(../images/pizza-pepperoni-full.gif);
+    background-image                  : url(#{$path-desktop}/pizza-pepperoni-full.gif);
     -webkit-animation-name            : FadeIn;
     -webkit-animation-timing-function : ease-in;
     -webkit-animation-duration        : 0.1s;
 
     @media #{$query-phones} {
+      background-image: url(#{$path-phone}/pizza-pepperoni-full.gif);
       background-size : 250px 250px;
       width           : 250px;
       height          : 250px;
@@ -62,12 +64,13 @@
     left                              : 47px;
     width                             : 392px;
     height                            : 387px;
-    background-image                  : url(../images/pizza-pepperoni-left.gif);
+    background-image                  : url(#{$path-desktop}/pizza-pepperoni-left.gif);
     -webkit-animation-name            : FadeIn;
     -webkit-animation-timing-function : ease-in;
     -webkit-animation-duration        : 0.1s;
 
     @media #{$query-phones} {
+      background-image: url(#{$path-phone}/pizza-pepperoni-left.gif);
       background-size : 141px 243px;
       width           : 141px;
       height          : 243px;
@@ -81,12 +84,13 @@
     left                              : 233px;
     width                             : 392px;
     height                            : 387px;
-    background-image                  : url(../images/pizza-pepperoni-right.gif);
+    background-image                  : url(#{$path-desktop}/pizza-pepperoni-right.gif);;
     -webkit-animation-name            : FadeIn;
     -webkit-animation-timing-function : ease-in;
     -webkit-animation-duration        : 0.1s;
 
     @media #{$query-phones} {
+      background-image: url(#{$path-phone}/pizza-pepperoni-right.gif);
       background-size : 130px 249px;
       width           : 130px;
       height          : 240px;

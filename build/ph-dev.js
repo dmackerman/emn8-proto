@@ -1,4 +1,4 @@
-/*! Pizza-Hut-Pilot-App v0.0.1a 2013-04-04 01:48 */
+/*! Pizza-Hut-Pilot-App v0.0.1a 2013-04-04 02:09 */
 /*jslint browser:true */
 /*global $, Marionette */
 
@@ -461,10 +461,10 @@ App.def('App.controller.Pizza', {
             exists = canvas.children(selector),
             pos = $(ev.currentTarget).offset();
 
+        ev.stopPropagation();
 
         //        me.showMenu(ev.clientX, ev.clientY);
         me.showMenu(pos.left + 35 - 97, pos.top - 40, type);
-        console.log(ev);
 
         if (exists.length > 0) {
             //            return exists.remove();
@@ -476,11 +476,13 @@ App.def('App.controller.Pizza', {
     /**
      * Switch topping group
      */
-    onToppingGroupClick : function () {
+    onToppingGroupClick : function (ev) {
         'use strict';
 
         var el = $(this),
             isSelected = el.hasClass('selected');
+
+        ev.stopPropagation();
 
         if (isSelected) {
             // this is already selected. Exit gracefully
@@ -553,6 +555,11 @@ App.def('App.controller.Pizza', {
         $('.pb-toppings-menu li.side' + side).addClass('selected');
 
         $('.pb-toppings-menu li').on('click', {me : me, type : type}, me.showTopping);
+        setTimeout(function () {
+            $(document).one('click', {me : me}, me.clearMenus);
+        }, 400);
+
+
 
     },
 
@@ -566,8 +573,6 @@ App.def('App.controller.Pizza', {
             where = this.className.match(/side\-(\S*)/)[1],
             exists = canvas.children('.' + type + '-' + where),
             pattern = new RegExp(type + "-(\S*)");
-
-        //        console.log(ev.data);
 
         //remove all
         me.findTopping(pattern).remove();
@@ -594,6 +599,11 @@ App.def('App.controller.Pizza', {
         });
 
         return found;
+    },
+
+    clearMenus: function (ev) {
+        'use strict';
+        $('.pb-toppings-menu').remove();
     }
 });
 
