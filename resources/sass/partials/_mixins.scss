@@ -28,21 +28,21 @@
 
 @-webkit-keyframes FadeIn {
   0% {
-    opacity : 0;
-    -webkit-transform: translateY(5px)
+    opacity           : 0;
+    -webkit-transform : translateY(5px);
   }
   100% {
-    opacity : 1;
-    -webkit-transform: translateY(0)
+    opacity           : 1;
+    -webkit-transform : translateY(0);
   }
 }
 
 @mixin fadeIn {
-  -webkit-animation: FadeIn 0.1s 0.1s ease both;
-//-moz-animation: fadeIn 3s 2s ease both;
-//-ms-animation: fadeIn 3s 2s ease both;
-//-o-animation: fadeIn 3s 2s ease both;
-//animation: fadeIn 3s 2s ease both;
+  -webkit-animation : FadeIn 0.1s 0s ease both;
+  -moz-animation    : FadeIn 0.1s 0s ease both;
+  -ms-animation     : FadeIn 0.1s 0s ease both;
+  -o-animation      : FadeIn 0.1s 0s ease both;
+  animation         : FadeIn 0.1s 0s ease both;
 }
 
 //@import "animate";
