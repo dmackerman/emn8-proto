@@ -38,10 +38,11 @@ $topping-selectors-height : 24px;
   width         : 90%;
 
   select {
-    width : 100%;
+    width: 32.5%;
 
     @media #{$query-phones} {
       display : block;
+      width: 100%;
     }
   }
 
