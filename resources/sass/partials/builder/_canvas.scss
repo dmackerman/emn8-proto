@@ -1,14 +1,5 @@
 // This is where we build pizza layers
 
-@-webkit-keyframes FadeIn {
-  0% {
-    opacity : 0;
-  }
-  100% {
-    opacity : 1;
-  }
-}
-
 .pb-canvas {
   position    : relative;
   margin-left : 20px;
@@ -45,9 +36,7 @@
     width                             : 392px;
     height                            : 387px;
     background-image                  : url(#{$path-desktop}/pizza-pepperoni-full.gif);
-    -webkit-animation-name            : FadeIn;
-    -webkit-animation-timing-function : ease-in;
-    -webkit-animation-duration        : 0.1s;
+    @include fadeIn;
 
     @media #{$query-phones} {
       background-image: url(#{$path-phone}/pizza-pepperoni-full.gif);
@@ -65,9 +54,7 @@
     width                             : 392px;
     height                            : 387px;
     background-image                  : url(#{$path-desktop}/pizza-pepperoni-left.gif);
-    -webkit-animation-name            : FadeIn;
-    -webkit-animation-timing-function : ease-in;
-    -webkit-animation-duration        : 0.1s;
+    @include fadeIn;
 
     @media #{$query-phones} {
       background-image: url(#{$path-phone}/pizza-pepperoni-left.gif);
@@ -85,9 +72,7 @@
     width                             : 392px;
     height                            : 387px;
     background-image                  : url(#{$path-desktop}/pizza-pepperoni-right.gif);;
-    -webkit-animation-name            : FadeIn;
-    -webkit-animation-timing-function : ease-in;
-    -webkit-animation-duration        : 0.1s;
+    @include fadeIn;
 
     @media #{$query-phones} {
       background-image: url(#{$path-phone}/pizza-pepperoni-right.gif);

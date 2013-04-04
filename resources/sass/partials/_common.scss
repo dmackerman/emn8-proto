@@ -26,6 +26,7 @@ body.gradient {
 #viewport {
   margin : 0 auto;
   width  : 965px;
+
   @media #{$query-phones} {
     margin-top : 140px;
     width      : 100%;

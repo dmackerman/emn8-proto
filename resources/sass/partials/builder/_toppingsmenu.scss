@@ -11,6 +11,7 @@ $border-color : #D7D7D7;
   border      : 5px solid rgba(30, 30, 30, 0.4);
   @include border-radius(5px);
   @include transparent-border;
+  @include fadeIn;
 
   &:after, &:before {
     top            : 100%;
@@ -75,7 +76,6 @@ $border-color : #D7D7D7;
     &:last-child {
       @include border-radius(0 5px 5px 0);
     }
-
 
   }
 }
