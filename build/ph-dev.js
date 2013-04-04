@@ -1,4 +1,4 @@
-/*! Pizza-Hut-Pilot-App v0.0.1a 2013-04-04 10:34 */
+/*! Pizza-Hut-Pilot-App v0.0.1a 2013-04-04 10:40 */
 /*jslint browser:true */
 /*global $, Marionette */
 
@@ -415,12 +415,6 @@ App.def('App.abstract.Page', {
         return me.paint();
     }
 });
-$(function () {
-    'use strict';
-    App.init('App.controller.Pizza');
-
-});
-
 App.def('App.controller.Pizza', {
     extend : 'App.util.Controller',
 
@@ -605,6 +599,11 @@ App.def('App.controller.Pizza', {
     }
 });
 
+$(function () {
+    'use strict';
+    App.init('App.controller.Pizza');
+
+});
 App.def('App.util.Registry', {
     init : function () {
         this.model = Backbone.Model.extend({});

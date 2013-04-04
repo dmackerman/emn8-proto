@@ -22,7 +22,6 @@
         <!--[if lt IE 9]>
         <script src="lib/html5shiv.js"></script>
         <![endif]-->
-        <script src="build/ph-all-min.js"></script>
     </head>
     <body>
         <div id="viewport">
@@ -98,5 +97,13 @@
             </footer>
         </div>
         <div id="dock"></div>
+    <script>
+        (function () {
+            var s = document.createElement('script');
+            s.async = true;
+            s.src = 'build/ph-all-min.js?_dc=' + (new Date()).getTime() ;
+            (document.getElementsByTagName('HEAD')[0] || document.getElementsByTagName('BODY')[0]).appendChild(s);
+        }());
+    </script>
     </body>
 </html>

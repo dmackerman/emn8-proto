@@ -1,9 +1,3 @@
-$(function () {
-    'use strict';
-    App.init('App.controller.Pizza');
-
-});
-
 App.def('App.controller.Pizza', {
     extend : 'App.util.Controller',
 
@@ -186,4 +180,10 @@ App.def('App.controller.Pizza', {
             $('.pb-toppings-menu').remove();
         }
     }
+});
+
+$(function () {
+    'use strict';
+    App.init('App.controller.Pizza');
+
 });

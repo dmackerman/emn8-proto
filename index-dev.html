@@ -1,103 +1,121 @@
 <!DOCTYPE html>
-<!--[if lt IE 7]>      <html class="no-js lt-ie9 lt-ie8 lt-ie7"> <![endif]-->
-<!--[if IE 7]>         <html class="no-js lt-ie9 lt-ie8"> <![endif]-->
-<!--[if IE 8]>         <html class="no-js lt-ie9"> <![endif]-->
-<!--[if gt IE 8]><!--> <html class="no-js"> <!--<![endif]-->
-    <head>
-        <meta charset="utf-8">
-        <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
-        <title>PizzaHut Responsive + jQuery Prototype</title>
-        <meta name="description" content="">
-        <meta name="viewport" content="width=device-width">
+<!--[if lt IE 7]>
+<html class="no-js lt-ie9 lt-ie8 lt-ie7"> <![endif]-->
+<!--[if IE 7]>
+<html class="no-js lt-ie9 lt-ie8"> <![endif]-->
+<!--[if IE 8]>
+<html class="no-js lt-ie9"> <![endif]-->
+<!--[if gt IE 8]><!-->
+<html class="no-js"> <!--<![endif]-->
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <title>PizzaHut Responsive + jQuery Prototype</title>
+    <meta name="description" content="">
+    <meta name="viewport" content="width=device-width">
 
 
-        <link rel="stylesheet" href="resources/css/normalize.min.css">
-        <link rel="stylesheet" type="text/css" media="screen, projection" href="resources/css/main.css">
-        <link href="resources/css/print.css" media="print" rel="stylesheet" type="text/css"/>
-        <!--[if IE]>
-        <link href="resources/css/ie.css" media="screen, projection" rel="stylesheet" type="text/css"/>
-        <![endif]-->
+    <link rel="stylesheet" href="resources/css/normalize.min.css">
+    <link rel="stylesheet" type="text/css" media="screen, projection" href="resources/css/main.css">
+    <link href="resources/css/print.css" media="print" rel="stylesheet" type="text/css"/>
+    <!--[if IE]>
+    <link href="resources/css/ie.css" media="screen, projection" rel="stylesheet" type="text/css"/>
+    <![endif]-->
 
 
-        <!--[if lt IE 9]>
-        <script src="lib/html5shiv.js"></script>
-        <![endif]-->
-        <script src="build/libs.js"></script>
-        <script src="build/ph-dev.js"></script>
-    </head>
-    <body>
-        <div id="viewport">
-            <div id="header-container">
-                <header id="header-menu">
-                    <nav>
-                        <ul>
-                            <li><a href="#">Sign in / Register</a></li>
-                            <li><a href="#">My Account</a></li>
-                            <li><a href="#">My Orders</a></li>
-                            <li><a href="#">My Favorites</a></li>
-                            <li><a href="#">My Stores</a></li>
-                        </ul>
-                    </nav>
-                </header>
+    <!--[if lt IE 9]>
+    <script src="lib/html5shiv.js"></script>
+    <![endif]-->
+    <script src="build/libs.js"></script>
+</head>
+<body>
+<div id="viewport">
+    <div id="header-container">
+        <header id="header-menu">
+            <nav>
+                <ul>
+                    <li><a href="#">Sign in / Register</a></li>
+                    <li><a href="#">My Account</a></li>
+                    <li><a href="#">My Orders</a></li>
+                    <li><a href="#">My Favorites</a></li>
+                    <li><a href="#">My Stores</a></li>
+                </ul>
+            </nav>
+        </header>
+    </div>
+
+    <div id="content">
+
+        <!-- pizza builder - to move to an App.Page -->
+        <article class="pizza-builder">
+            <div class="pb-dropdowns">
+                <select>
+                    <option>One</option>
+                </select>
+                <select>
+                    <option>Two</option>
+                </select>
+                <select>
+                    <option>Three</option>
+                </select>
             </div>
 
-            <div id="content">
+            <!--<div class="pb-canvas">-->
+            <!--<div class="marinara"></div>-->
+            <!--</div>-->
 
-                <!-- pizza builder - to move to an App.Page -->
-                <article class="pizza-builder">
-                    <div class="pb-dropdowns">
-                        <select><option>One</option></select>
-                        <select><option>Two</option></select>
-                        <select><option>Three</option></select>
-                    </div>
+            <aside class="pb-toppings">
+                <ul class="topping-selectors">
+                    <li class="selected">Meats</li>
+                    <li>Veggies</li>
+                </ul>
 
-                    <!--<div class="pb-canvas">-->
-                        <!--<div class="marinara"></div>-->
-                    <!--</div>-->
-
-                    <aside class="pb-toppings">
-                        <ul class="topping-selectors">
-                            <li class="selected">Meats</li>
-                            <li>Veggies</li>
-                        </ul>
-
-                        <div class="toppings">
-                            <figure class="pb-topping chicken">Chicken</figure>
-                            <figure class="pb-topping bacon">Bacon</figure>
-                            <figure class="pb-topping meetballs">Meetballs</figure>
-                            <figure class="pb-topping pepperoni">Pepperoni</figure>
-                            <figure class="pb-topping meetballs">Meetballs</figure>
-                            <figure class="pb-topping pepperoni">Pepperoni</figure>
-                            <figure class="pb-topping bacon">Bacon</figure>
-                            <figure class="pb-topping chicken">Chicken</figure>
-                            <figure class="pb-topping bacon">Bacon</figure>
-                            <figure class="pb-topping chicken">Chicken</figure>
-                            <figure class="pb-topping pepperoni">Pepperoni</figure>
-                            <figure class="pb-topping meetballs">Meetballs</figure>
-                            <div class="clearboth"></div>
-                        </div>
-
-                        <button class="pb-continue">Continue</button>
-                        <footer>Any special requests | Start over</footer>
-                        <div class="clearboth"></div>
-                    </aside>
-
-                    <button class="pb-continue">Continue</button>
-
-                    <div class="pb-canvas">
-                        <div class="marinara"></div>
-                    </div>
-
+                <div class="toppings">
+                    <figure class="pb-topping chicken">Chicken</figure>
+                    <figure class="pb-topping bacon">Bacon</figure>
+                    <figure class="pb-topping meetballs">Meetballs</figure>
+                    <figure class="pb-topping pepperoni">Pepperoni</figure>
+                    <figure class="pb-topping meetballs">Meetballs</figure>
+                    <figure class="pb-topping pepperoni">Pepperoni</figure>
+                    <figure class="pb-topping bacon">Bacon</figure>
+                    <figure class="pb-topping chicken">Chicken</figure>
+                    <figure class="pb-topping bacon">Bacon</figure>
+                    <figure class="pb-topping chicken">Chicken</figure>
+                    <figure class="pb-topping pepperoni">Pepperoni</figure>
+                    <figure class="pb-topping meetballs">Meetballs</figure>
                     <div class="clearboth"></div>
-                </article>
+                </div>
 
+                <button class="pb-continue">Continue</button>
+                <footer>Any special requests | Start over</footer>
+                <div class="clearboth"></div>
+            </aside>
 
+            <button class="pb-continue">Continue</button>
+
+            <div class="pb-canvas">
+                <div class="marinara"></div>
             </div>
 
-            <footer id="footer-main">
-                © 2013 Pizza Hut, Inc. All rights reserved. The Pizza Hut name, logos and related marks are trademarks of Pizza Hut, Inc.
-            </footer>
-        </div>
-        <div id="dock"></div>
-    </body>
+            <div class="clearboth"></div>
+        </article>
+
+
+    </div>
+
+    <footer id="footer-main">
+        © 2013 Pizza Hut, Inc. All rights reserved. The Pizza Hut name, logos and related marks are trademarks of Pizza
+        Hut, Inc.
+    </footer>
+</div>
+<div id="dock"></div>
+<script>
+        (function () {
+            var s = document.createElement('script');
+            s.async = true;
+            s.src = 'build/ph-dev.js?_dc=';
+            (document.getElementsByTagName('HEAD')[0] || document.getElementsByTagName('BODY')[0]).appendChild(s);
+        }());
+    </script>
+</body>
 </html>
