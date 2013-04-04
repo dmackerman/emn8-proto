@@ -8,5 +8,3 @@ App.def('App.util.Registry', {
 //        console.log('args', arguments);
     }
 });
-
-App.reg = App.init('App.util.Registry', 'Jebi', 'se');

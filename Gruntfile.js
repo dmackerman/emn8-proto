@@ -24,8 +24,7 @@ module.exports = function (grunt) {
                     'lib/jquery.js',
                     'lib/underscore.js',
                     'lib/json2.js',
-                    'lib/backbone.js',
-                    'lib/backbone.marionette.js'
+                    'lib/backbone.js'
                 ],
                 dest : 'build/libs.js'
             }

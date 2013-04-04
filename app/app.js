@@ -2,7 +2,7 @@
 /*global $, Marionette */
 
 //Bootstrap the app
-var App = new Marionette.Application();
+var App = function () {};
 
 /**
  * Make templates look more like Ext.Tpl

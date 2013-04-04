@@ -1,9 +1,9 @@
-/*! Pizza-Hut-Pilot-App v0.0.1a 2013-04-04 10:31 */
+/*! Pizza-Hut-Pilot-App v0.0.1a 2013-04-04 10:34 */
 /*jslint browser:true */
 /*global $, Marionette */
 
 //Bootstrap the app
-var App = new Marionette.Application();
+var App = function () {};
 
 /**
  * Make templates look more like Ext.Tpl
@@ -615,8 +615,6 @@ App.def('App.util.Registry', {
 //        console.log('args', arguments);
     }
 });
-
-App.reg = App.init('App.util.Registry', 'Jebi', 'se');
 App.def('App.view.builder.ToppingSideChooser', {
     extend : 'App.abstract.Page',
     tpl    : [
