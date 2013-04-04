@@ -64,7 +64,7 @@ $topping-selectors-height : 24px;
   @media #{$query-phones} {
     float        : none;
     margin-right : 0;
-    text-align: center;
+    text-align   : center;
   }
 
   .topping-selectors {
@@ -141,10 +141,11 @@ $topping-selectors-height : 24px;
   @include chooser-button-gradient;
 
   @media #{$query-phones} {
-    float   : none;
-    display : inline-block;
-    min-width: 85px;
-    margin: 5px;
+    float     : none;
+    display   : inline-block;
+    min-width : 68px;
+    width     : 68px;
+    margin    : 5px;
   }
 
   &:after {
