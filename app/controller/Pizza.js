@@ -20,12 +20,14 @@ App.def('App.controller.Pizza', {
     init : function () {
         'use strict';
 
-        var builder = this.builder = $(".pizza-builder");
+        var me = this,
+            builder = me.builder = $(".pizza-builder");
 
-        App.controllers.Pizza = this;
+        App.controllers.Pizza = me;
 
-        builder.delegate(".pb-topping", "click", {me : this}, this.onToppingClick);
-        builder.delegate(".topping-selectors li", "click", this.onToppingGroupClick);
+        builder.delegate(".pb-topping", "click", {me : me}, me.onToppingClick);
+        builder.delegate(".topping-selectors li", "click", me.onToppingGroupClick);
+        $(document).on('click', {me : me}, me.clearMenus);
     },
 
     /**
@@ -138,12 +140,6 @@ App.def('App.controller.Pizza', {
         $('.pb-toppings-menu li.side' + side).addClass('selected');
 
         $('.pb-toppings-menu li').on('click', {me : me, type : type}, me.showTopping);
-        setTimeout(function () {
-            $(document).one('click', {me : me}, me.clearMenus);
-        }, 400);
-
-
-
     },
 
     showTopping : function (ev) {
@@ -184,8 +180,10 @@ App.def('App.controller.Pizza', {
         return found;
     },
 
-    clearMenus: function (ev) {
+    clearMenus : function (ev) {
         'use strict';
-        $('.pb-toppings-menu').remove();
+        if (!$(ev.target).parents('.pb-toppings-menu').length) {
+            $('.pb-toppings-menu').remove();
+        }
     }
 });
