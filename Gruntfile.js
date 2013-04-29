@@ -60,6 +60,18 @@ module.exports = function (grunt) {
         },
 
         compass : {
+            dist: {},
+            server: {
+                options: {
+                    debugInfo: true
+                }
+            },
+            options: {
+                sassDir: 'resources/sass',
+                cssDir: 'resources/css',
+                imagesDir: 'resources/images',
+                relativeAssets: true
+            },
             prod : {
                 options : {
                     sassDir     : 'resources/sass',
@@ -75,14 +87,18 @@ module.exports = function (grunt) {
             }
         },
 
-        // Watch application js files and Gruntfile for changes
+        // Watch application js files and Gruntfile for changes yes
         watch   : {
-            scripts : {
+            scripts : { 
                 files   : ['app/**/*.js', 'Gruntfile.js'],
                 tasks   : ['minimal'],
                 options : {
                     nospawn : true
                 }
+            },
+            compass: {
+                files: ['resources/sass/**/*.scss'],
+                tasks: ['compass:server']
             }
         }
     });

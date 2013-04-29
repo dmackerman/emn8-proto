@@ -14,6 +14,8 @@
     <meta name="description" content="">
     <meta name="viewport" content="width=device-width">
 
+    <script type="text/javascript" src="//use.typekit.net/vhr0vvg.js"></script>
+    <script type="text/javascript">try{Typekit.load();}catch(e){}</script>
 
     <link rel="stylesheet" href="resources/css/normalize.min.css">
     <link rel="stylesheet" type="text/css" media="screen, projection" href="resources/css/main.css">
@@ -43,25 +45,28 @@
         </header>
     </div>
 
+    <div class="intro hide-for-desktop">
+      <h1>Welcome, Steve</h1>
+      <div class="menu">
+        Menu
+      </div>
+    </div>
+
     <div id="content">
 
         <!-- pizza builder - to move to an App.Page -->
         <article class="pizza-builder">
             <div class="pb-dropdowns">
-                <select>
-                    <option>One</option>
-                </select>
-                <select>
-                    <option>Two</option>
-                </select>
-                <select>
-                    <option>Three</option>
-                </select>
-            </div>
-
-            <!--<div class="pb-canvas">-->
-            <!--<div class="marinara"></div>-->
-            <!--</div>-->
+              <select>
+                <option>Size</option>
+              </select>
+              <select>
+                <option>Crust</option>
+              </select>
+              <select>
+                <option>Cheese</option>
+              </select>
+          </div>
 
             <aside class="pb-toppings">
                 <ul class="topping-selectors">
@@ -70,18 +75,18 @@
                 </ul>
 
                 <div class="toppings">
-                    <figure class="pb-topping chicken">Chicken</figure>
-                    <figure class="pb-topping bacon">Bacon</figure>
-                    <figure class="pb-topping meetballs">Meetballs</figure>
-                    <figure class="pb-topping pepperoni">Pepperoni</figure>
-                    <figure class="pb-topping meetballs">Meetballs</figure>
-                    <figure class="pb-topping pepperoni">Pepperoni</figure>
-                    <figure class="pb-topping bacon">Bacon</figure>
-                    <figure class="pb-topping chicken">Chicken</figure>
-                    <figure class="pb-topping bacon">Bacon</figure>
-                    <figure class="pb-topping chicken">Chicken</figure>
-                    <figure class="pb-topping pepperoni">Pepperoni</figure>
-                    <figure class="pb-topping meetballs">Meetballs</figure>
+                    <figure class="pb-topping chicken"><span class="topping">Chicken</span></figure>
+                    <figure class="pb-topping bacon"><span class="topping">Bacon</span></figure>
+                    <figure class="pb-topping meetballs"><span class="topping">Meetballs</span></figure>
+                    <figure class="pb-topping pepperoni"><span class="topping">Yes</span></figure>
+                    <figure class="pb-topping meetballs"><span class="topping">Meetballs</span></figure>
+                    <figure class="pb-topping pepperoni"><span class="topping">Pepperoni</span></figure>
+                    <figure class="pb-topping bacon"><span class="topping">Bacon</span></figure>
+                    <figure class="pb-topping chicken"><span class="topping">Chicken</span></figure>
+                    <figure class="pb-topping bacon"><span class="topping">Bacon</span></figure>
+                    <figure class="pb-topping chicken"><span class="topping">Chicken</span></figure>
+                    <figure class="pb-topping pepperoni"><span class="topping">Pepperoni</span></figure>
+                    <figure class="pb-topping meetballs"><span class="topping">Meetballs</span></figure>
                     <div class="clearboth"></div>
                 </div>
 
@@ -106,12 +111,19 @@
         © 2013 Pizza Hut, Inc. All rights reserved. The Pizza Hut name, logos and related marks are trademarks of Pizza
         Hut, Inc.
     </footer>
+
 </div>
+
 <div id="dock">
-    <div class="location">280 Bergen st., Brooklyn, NY 11201</div>
-    <div class="total">$0.00</div>
-    <div class="items"><span>0</span></div>
+  <div class="total">$0.00</div>
+  <div class="quantity">
+    <div class="arrow down">-</div>
+    <div class="arrow up">+</div>
+    <div class="value">1</div>
+  </div>
+  <!-- <div class="items">In your bag <span class="value">0</span></div> -->
 </div>
+
 <script>
     (function () {
         var s = document.createElement('script');

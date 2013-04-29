@@ -7,10 +7,13 @@
   float       : left;
 
   @media #{$query-phones} {
+    position: fixed;
     float  : none;
-    width  : 320px;
-    height : 350px;
-    margin : 0 auto;
+    width  : 150px;
+    height : 150px;
+    bottom: 0;
+    z-index: 200;
+    margin: 0;
   }
 
   .marinara {
@@ -21,12 +24,14 @@
     background-image : url(#{$path-desktop}/pizza-cheese.gif);
 
     @media #{$query-phones} {
+      position: fixed;
+      bottom: -20px;
+      top: auto;
+      left: -20px;
       background-image: url(#{$path-phone}/pizza-cheese.gif);
-      background-size : 310px 310px;
-      width           : 310px;
-      height          : 310px;
-      position        : relative;
-      margin          : 0 auto;
+      background-size : 120px 120px;
+      width           : 120px;
+      height          : 120px;
     }
   }
 
@@ -40,29 +45,29 @@
 
     @media #{$query-phones} {
       background-image: url(#{$path-phone}/pizza-pepperoni-full.gif);
-      background-size : 250px 250px;
-      width           : 250px;
-      height          : 250px;
-      top             : 35px;
-      left            : 37px;
+      background-size: 93px 93px;
+      width: 93px;
+      height: 93px;
+      top: 64px;
+      left: -4px;
     }
   }
 
   .pepperoni-left {
-    top                               : 58px;
-    left                              : 47px;
-    width                             : 392px;
-    height                            : 387px;
-    background-image                  : url(#{$path-desktop}/pizza-pepperoni-left.gif);
+    top: 58px;
+    left: 47px;
+    width: 392px;
+    height: 387px;
+    background-image: url(#{$path-desktop}/pizza-pepperoni-left.gif);
     @include fadeIn;
 
     @media #{$query-phones} {
       background-image: url(#{$path-phone}/pizza-pepperoni-left.gif);
-      background-size : 141px 243px;
-      width           : 141px;
-      height          : 243px;
-      top             : 40px;
-      left            : 35px;
+      background-size: 46px 88px;
+      width: 46px;
+      height: 93px;
+      top: 64px;
+      left: -4px;
     }
   }
 
@@ -76,11 +81,11 @@
 
     @media #{$query-phones} {
       background-image: url(#{$path-phone}/pizza-pepperoni-right.gif);
-      background-size : 130px 249px;
-      width           : 130px;
-      height          : 240px;
-      top             : 34px;
-      left            : 161px;
+      background-size: 46px 88px;
+      width: 46px;
+      height: 93px;
+      top: 64px;
+      left: 42px;
     }
   }
 }
